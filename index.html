@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Pool Services — Professional Pool Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: #FFFFFF;
+      color: #1E292B;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      border-bottom: 1px solid #E2E8F0; transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08); }
+    nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+    }
+    .nav-logo {
+      font-size: 1.25rem; font-weight: 800; color: #1E292B;
+      letter-spacing: -0.025em;
+    }
+    .nav-logo span { color: #0EA5E9; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 0.9rem; font-weight: 500; color: #64748B;
+      transition: color 0.2s; position: relative;
+    }
+    .nav-links a:hover { color: #0EA5E9; }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #0EA5E9; color: #FFF !important; padding: 0.5rem 1.25rem;
+      border-radius: 999px; font-weight: 600; font-size: 0.875rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { background: #0369A1; transform: translateY(-2px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 24px; height: 2px; background: #1E292B; border-radius: 2px; transition: all 0.3s; }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 7rem 0 4rem; background: #FFFFFF;
+    }
+    #hero .container { display: flex; align-items: center; gap: 48px; width: 100%; }
+    .hero-content { flex: 0 0 40%; }
+    .hero-content .hero-tag {
+      font-size: 0.875rem; font-weight: 600; letter-spacing: 0.12em;
+      color: #0EA5E9; text-transform: uppercase; margin-bottom: 1rem;
+    }
+    .hero-content h1 {
+      font-size: clamp(2.5rem, 4.5vw, 4rem); font-weight: 900;
+      color: #1E292B; letter-spacing: -0.02em; line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+    .hero-content h1 span { color: #0EA5E9; }
+    .hero-content p {
+      font-size: clamp(1rem, 1.5vw, 1.125rem); color: #64748B;
+      max-width: 480px; margin-bottom: 2rem; line-height: 1.6;
+    }
+    .hero-image {
+      flex: 0 0 55%; border-radius: 16px; overflow: hidden;
+      background: #E2E8F0; aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08);
+    }
+    .hero-image i { font-size: 5rem; color: #94A3B8; }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 80px 0; }
+    section.bg-aqua { background: #F0F9FB; }
+    section.bg-white { background: #FFFFFF; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #0EA5E9; margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700;
+      color: #1E292B; letter-spacing: -0.02em; margin-bottom: 0.75rem;
+    }
+    .section-subtitle {
+      font-size: 1.125rem; color: #64748B; max-width: 600px;
+      margin-bottom: 48px; line-height: 1.6;
+    }
+    .text-center { text-align: center; }
+    .section-title-center { text-align: center; }
+    .section-subtitle-center { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* ===== ABOUT ===== */
+    .about-grid { display: grid; grid-template-columns: 55% 40%; gap: 5%; align-items: center; }
+    .about-image {
+      border-radius: 16px; overflow: hidden;
+      background: #E2E8F0; aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08);
+    }
+    .about-image i { font-size: 4rem; color: #94A3B8; }
+    .about-text p { color: #64748B; font-size: 1.05rem; margin-bottom: 2rem; line-height: 1.7; }
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .stat-card {
+      background: #F0F9FB; border-radius: 12px; padding: 1.25rem; text-align: center;
+      border: 1px solid #E2E8F0;
+    }
+    .stat-card .num { font-size: 1.5rem; font-weight: 800; color: #0EA5E9; display: block; }
+    .stat-card .label { font-size: 0.8rem; color: #64748B; font-weight: 500; }
+
+    /* ===== CERTIFICATES ===== */
+    .cert-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .cert-card {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px;
+      padding: 2rem 1.5rem; text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cert-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+    .cert-icon {
+      width: 64px; height: 64px; margin: 0 auto 1rem; border-radius: 12px;
+      background: #F0F9FB; display: flex; align-items: center; justify-content: center;
+      font-size: 1.75rem; color: #0EA5E9;
+    }
+    .cert-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; color: #1E292B; }
+    .cert-card p { font-size: 0.8rem; color: #64748B; }
+
+    /* ===== SERVICE AREAS ===== */
+    .areas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .area-card {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px;
+      padding: 2rem; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .area-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+    .area-icon {
+      width: 48px; height: 48px; border-radius: 12px; background: #F0F9FB;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.25rem; color: #0EA5E9; margin-bottom: 1rem;
+    }
+    .area-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: #1E292B; }
+    .area-card p { font-size: 0.9rem; color: #64748B; line-height: 1.7; }
+
+    /* ===== TOP SERVICES ===== */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px;
+      padding: 2rem; text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+    .service-icon {
+      width: 64px; height: 64px; margin: 0 auto 1rem; border-radius: 12px;
+      background: #F0F9FB; display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; color: #0EA5E9;
+    }
+    .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: #1E292B; }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      color: #0EA5E9; font-weight: 600; font-size: 0.875rem;
+      transition: gap 0.2s;
+    }
+    .service-link:hover { gap: 0.625rem; }
+
+    /* ===== PRICING ===== */
+    .pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .pricing-card {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px;
+      padding: 2rem; position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+    .pricing-card.featured {
+      border-color: #0EA5E9; box-shadow: 0 4px 6px -1px rgba(14,165,233,0.12);
+    }
+    .pricing-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: #0EA5E9; color: #FFF;
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      padding: 0.35rem 1rem; border-radius: 999px; letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .pricing-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; color: #1E292B; }
+    .pricing-card .price { font-size: 2rem; font-weight: 900; color: #1E292B; margin-bottom: 0.25rem; }
+    .pricing-card .price-note { font-size: 0.8rem; color: #64748B; margin-bottom: 1.25rem; }
+    .pricing-features { list-style: none; margin-bottom: 1.5rem; }
+    .pricing-features li {
+      font-size: 0.875rem; color: #64748B; padding: 0.35rem 0;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .pricing-features li i { color: #0EA5E9; font-size: 0.75rem; width: 16px; }
+    .pricing-btn {
+      display: block; text-align: center; background: #0EA5E9; color: #FFF;
+      padding: 0.75rem; border-radius: 999px; font-weight: 600; font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .pricing-btn:hover { background: #0369A1; transform: translateY(-2px); }
+
+    /* ===== GALLERY ===== */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .gallery-item {
+      border-radius: 12px; overflow: hidden; cursor: pointer; position: relative;
+      background: #E2E8F0; aspect-ratio: 4/3;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+    .gallery-item i { font-size: 2.5rem; color: #94A3B8; }
+    .gallery-item .label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.65));
+      color: #FFF; padding: 2rem 1rem 0.75rem; font-size: 0.875rem; font-weight: 600;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 2000;
+      background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      color: #FFF; font-size: 2rem; cursor: pointer; background: none; border: none;
+    }
+    .lightbox-close:hover { transform: scale(1.15); }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .testimonial-card {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px;
+      padding: 2rem; transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+    .testimonial-stars { color: #0EA5E9; font-size: 0.9rem; margin-bottom: 1rem; }
+    .testimonial-card blockquote {
+      font-size: 0.95rem; color: #64748B; font-style: italic; line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testimonial-avatar {
+      width: 44px; height: 44px; border-radius: 999px; background: #E2E8F0;
+      display: flex; align-items: center; justify-content: center; color: #94A3B8;
+      flex-shrink: 0;
+    }
+    .testimonial-author .name { font-weight: 700; font-size: 0.9rem; color: #1E292B; display: block; }
+    .testimonial-author .role { font-size: 0.8rem; color: #64748B; }
+
+    /* ===== FAQ ===== */
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+      background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 12px;
+      margin-bottom: 0.75rem; overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; background: none; border: none; padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 1rem; font-weight: 600; color: #1E292B; cursor: pointer;
+      text-align: left; font-family: inherit; transition: color 0.2s;
+    }
+    .faq-question:hover { color: #0EA5E9; }
+    .faq-question i { color: #0EA5E9; transition: transform 0.3s; font-size: 0.875rem; }
+    .faq-item.active .faq-question i { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease;
+      padding: 0 1.5rem;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 300px; padding: 0 1.5rem 1.25rem;
+    }
+    .faq-answer p { color: #64748B; font-size: 0.95rem; line-height: 1.7; }
+
+    /* ===== CONTACT ===== */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      font-family: inherit; font-size: 0.95rem;
+      background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 6px;
+      padding: 0.625rem 0.875rem; color: #1E292B;
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    }
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+      border-color: #0EA5E9; box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+    }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .contact-submit {
+      background: #0EA5E9; color: #FFF; border: none; padding: 0.75rem 2rem;
+      border-radius: 999px; font-size: 1rem; font-weight: 700; cursor: pointer;
+      font-family: inherit; transition: background 0.2s, transform 0.2s;
+      align-self: flex-start;
+    }
+    .contact-submit:hover { background: #0369A1; transform: translateY(-2px); }
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-info-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-info-icon {
+      width: 44px; height: 44px; border-radius: 12px; background: #F0F9FB;
+      display: flex; align-items: center; justify-content: center;
+      color: #0EA5E9; font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-info-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.2rem; color: #1E292B; }
+    .contact-info-item p { font-size: 0.85rem; color: #64748B; }
+    .contact-info-item .phone-large { font-size: 1.3rem; font-weight: 700; color: #0EA5E9; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #1E292B; color: #94A3B8; padding: 4rem 0 0;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.7; margin-top: 0.75rem; }
+    .footer-brand .logo { color: #FFF; font-size: 1.25rem; font-weight: 800; }
+    .footer-brand .logo span { color: #0EA5E9; }
+    footer h4 { color: #FFF; font-size: 1rem; font-weight: 700; margin-bottom: 1.25rem; }
+    footer ul { list-style: none; }
+    footer ul li { margin-bottom: 0.6rem; }
+    footer ul a { font-size: 0.875rem; transition: color 0.2s; }
+    footer ul a:hover { color: #0EA5E9; }
+    .footer-contact li { display: flex; align-items: center; gap: 0.625rem; font-size: 0.875rem; }
+    .footer-contact i { color: #0EA5E9; width: 16px; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08); margin-top: 3rem; padding: 1.5rem 0;
+      text-align: center; font-size: 0.85rem;
+    }
+
+    /* ===== SCROLL TO TOP ===== */
+    .scroll-top {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+      width: 44px; height: 44px; border-radius: 999px; background: #0EA5E9;
+      color: #FFF; border: none; cursor: pointer; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(20px); pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s, background 0.3s;
+    }
+    .scroll-top.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .scroll-top:hover { background: #0369A1; }
+
+    /* ===== BUTTON ===== */
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #0EA5E9; color: #FFF; padding: 0.75rem 2rem;
+      border-radius: 999px; font-size: 1rem; font-weight: 700;
+      border: none; cursor: pointer; font-family: inherit;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: #0369A1; transform: translateY(-2px); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-content { flex: 0 0 45%; }
+      .hero-image { flex: 0 0 50%; }
+      .about-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+      .cert-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 24px; }
+      section { padding: 60px 0; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 70px;
+        left: 0; right: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px);
+        padding: 1rem 2rem 2rem; border-bottom: 1px solid #E2E8F0;
+        box-shadow: 0 10px 15px -3px rgba(0,0,0,0.08); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      #hero { min-height: auto; padding: 6rem 0 3rem; }
+      #hero .container { flex-direction: column; gap: 2rem; }
+      .hero-content { flex: none; width: 100%; }
+      .hero-content h1 { font-size: 2.5rem; }
+      .hero-image { flex: none; width: 100%; aspect-ratio: 16/9; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .cert-grid { grid-template-columns: repeat(2, 1fr); }
+      .areas-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-form .form-row { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(3, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .cert-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="navbar">
+  <div class="container">
+    <a href="#hero" class="nav-logo">A <span>Pool</span> Services</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:+17035551234" class="nav-cta"><i class="fas fa-phone"></i> (703) 555-1234</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== 1. HERO ===== -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-tag">Welcome To</p>
+      <h1>A <span>Pool</span> Services</h1>
+      <p>Professional pool company with a focus on residential and commercial properties in VA, DC, and MD.</p>
+      <a href="tel:+17035551234" class="btn-primary"><i class="fas fa-phone"></i> Call Us Now</a>
+    </div>
+    <div class="hero-image">
+      <i class="fas fa-water"></i>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 2. ABOUT ===== -->
+<section id="about" class="bg-aqua">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image">
+        <i class="fas fa-water"></i>
+      </div>
+      <div class="about-text">
+        <span class="section-tag"><i class="fas fa-building"></i> About Us</span>
+        <h2 class="section-title">Trusted Pool Care Since 2012</h2>
+        <p>A Pool Services is a pool company focused on residential and commercial properties in the DC Metropolitan area, including Northern Virginia and Maryland. In the last 10 years, we have upheld our proficiency in servicing, maintaining, and managing residential and commercial pools.</p>
+        <div class="stats-row">
+          <div class="stat-card">
+            <span class="num">10+</span>
+            <span class="label">Years Experience</span>
+          </div>
+          <div class="stat-card">
+            <span class="num">500+</span>
+            <span class="label">Clients Served</span>
+          </div>
+          <div class="stat-card">
+            <span class="num">3</span>
+            <span class="label">Licensed Areas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. CERTIFICATES ===== -->
+<section class="bg-white">
+  <div class="container text-center">
+    <span class="section-tag"><i class="fas fa-certificate"></i> Credentials</span>
+    <h2 class="section-title section-title-center">Licensed &amp; Certified</h2>
+    <p class="section-subtitle section-subtitle-center">We hold industry-recognized certifications ensuring top-quality service and safety compliance.</p>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-award"></i></div>
+        <h4>BBB</h4>
+        <p>Better Business Bureau<br/>Accredited Business</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-swimmer"></i></div>
+        <h4>APSP</h4>
+        <p>Association of Pool &amp; Spa Professionals<br/>Certified Member</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-trophy"></i></div>
+        <h4>PHTA</h4>
+        <p>Pool &amp; Hot Tub Alliance<br/>Professional Member</p>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+        <h4>VA License</h4>
+        <p>Virginia DPOR<br/>Licensed Contractor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. SERVICE AREAS ===== -->
+<section class="bg-aqua">
+  <div class="container text-center">
+    <span class="section-tag"><i class="fas fa-map-marker-alt"></i> Coverage</span>
+    <h2 class="section-title section-title-center">Areas We Serve</h2>
+    <p class="section-subtitle section-subtitle-center">Proudly serving residential and commercial clients across the DMV region.</p>
+    <div class="areas-grid">
+      <div class="area-card">
+        <div class="area-icon"><i class="fas fa-flag-usa"></i></div>
+        <h3>Virginia</h3>
+        <p>Fairfax County, Arlington County, Prince William County, Loudoun County, City of Alexandria</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon"><i class="fas fa-monument"></i></div>
+        <h3>Washington DC</h3>
+        <p>All wards — Northwest, Northeast, Southeast, Southwest</p>
+      </div>
+      <div class="area-card">
+        <div class="area-icon"><i class="fas fa-water"></i></div>
+        <h3>Maryland</h3>
+        <p>Montgomery County, Prince George's County, Charles County</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. TOP SERVICES ===== -->
+<section id="services" class="bg-white">
+  <div class="container text-center">
+    <span class="section-tag"><i class="fas fa-wrench"></i> What We Do</span>
+    <h2 class="section-title section-title-center">Top Services</h2>
+    <p class="section-subtitle section-subtitle-center">Comprehensive pool care from opening to closing and everything in between.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-play-circle"></i></div>
+        <h3>POOL OPENING</h3>
+        <a href="#" class="service-link">Find Out More <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-tint"></i></div>
+        <h3>POOL MAINTENANCE</h3>
+        <a href="#" class="service-link">Find Out More <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-stop-circle"></i></div>
+        <h3>POOL CLOSING</h3>
+        <a href="#" class="service-link">Find Out More <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-water"></i></div>
+        <h3>ACID / PRESSURE WASH</h3>
+        <a href="#" class="service-link">Find Out More <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-tools"></i></div>
+        <h3>REPAIRS AND RENOVATION</h3>
+        <a href="#" class="service-link">Find Out More <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><i class="fas fa-cogs"></i></div>
+        <h3>POOL EQUIPMENT INSTALLATION</h3>
+        <a href="#" class="service-link">Find Out More <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. PRICING ===== -->
+<section id="pricing" class="bg-aqua">
+  <div class="container text-center">
+    <span class="section-tag"><i class="fas fa-tag"></i> Plans</span>
+    <h2 class="section-title section-title-center">Pricing Packages</h2>
+    <p class="section-subtitle section-subtitle-center">Flexible plans designed for every pool owner. Chemicals included in all packages.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card featured">
+        <span class="pricing-badge">&#9733; Most Popular</span>
+        <h3>WEEKLY PACKAGE</h3>
+        <div class="price">$2,990</div>
+        <div class="price-note">Chemicals Included</div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> POOL OPENING</li>
+          <li><i class="fas fa-check"></i> 15 WEEKLY MAINTENANCE VISITS</li>
+          <li><i class="fas fa-check"></i> POOL CLOSING</li>
+          <li><i class="fas fa-check"></i> ADDITIONAL VISIT $140</li>
+        </ul>
+        <a href="#" class="pricing-btn">ORDER NOW</a>
+      </div>
+      <div class="pricing-card">
+        <h3>BI-WEEKLY PACKAGE</h3>
+        <div class="price">$1,990</div>
+        <div class="price-note">Chemicals Included</div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> POOL OPENING</li>
+          <li><i class="fas fa-check"></i> 8 BI-WEEKLY MAINTENANCE VISITS</li>
+          <li><i class="fas fa-check"></i> POOL CLOSING</li>
+          <li><i class="fas fa-check"></i> ADDITIONAL VISIT $140</li>
+        </ul>
+        <a href="#" class="pricing-btn">ORDER NOW</a>
+      </div>
+      <div class="pricing-card">
+        <h3>OPEN / CLOSE PACKAGE</h3>
+        <div class="price">$450</div>
+        <div class="price-note">Chemicals Included</div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> POOL OPENING</li>
+          <li><i class="fas fa-check"></i> POOL CLOSING</li>
+        </ul>
+        <a href="#" class="pricing-btn">ORDER NOW</a>
+      </div>
+      <div class="pricing-card">
+        <h3>ACID WASH</h3>
+        <div class="price">$900</div>
+        <div class="price-note">Starts at</div>
+        <ul class="pricing-features">
+          <li><i class="fas fa-check"></i> PROFESSIONAL ACID WASH</li>
+          <li><i class="fas fa-check"></i> PRESSURE WASH INCLUDED</li>
+        </ul>
+        <a href="#" class="pricing-btn">ORDER NOW</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. GALLERY ===== -->
+<section id="gallery" class="bg-white">
+  <div class="container text-center">
+    <span class="section-tag"><i class="fas fa-images"></i> Portfolio</span>
+    <h2 class="section-title section-title-center">Our Projects</h2>
+    <p class="section-subtitle section-subtitle-center">A look at our work across residential and commercial properties in the DMV.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <i class="fas fa-image"></i>
+        <span class="label">Residential Pool Maintenance</span>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <i class="fas fa-image"></i>
+        <span class="label">Commercial Facility Management</span>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <i class="fas fa-image"></i>
+        <span class="label">Pool Renovation</span>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <i class="fas fa-image"></i>
+        <span class="label">New Equipment Installation</span>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <i class="fas fa-image"></i>
+        <span class="label">Acid Wash Before &amp; After</span>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <i class="fas fa-image"></i>
+        <span class="label">Safety Cover Installation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <div class="gallery-item" style="width: 90vw; max-width: 600px; aspect-ratio: 4/3; cursor: default;">
+    <i class="fas fa-image" style="font-size: 4rem;"></i>
+    <span class="label" id="lightboxLabel">Placeholder</span>
+  </div>
+</div>
+
+<!-- ===== 8. TESTIMONIALS ===== -->
+<section id="testimonials" class="bg-aqua">
+  <div class="container text-center">
+    <span class="section-tag"><i class="fas fa-quote-left"></i> Testimonials</span>
+    <h2 class="section-title section-title-center">What Our Clients Say</h2>
+    <p class="section-subtitle section-subtitle-center">Trusted by homeowners, property managers, and HOAs across Northern Virginia.</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <blockquote>&ldquo;A Pool Services has been maintaining our community pool for two years. Their team is professional, punctual, and the water quality has never been better. Highly recommend!&rdquo;</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+          <div><span class="name">Sarah M.</span><span class="role">HOA Board President, Fairfax, VA</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <blockquote>&ldquo;We hired them for our commercial property's pool renovation. From demo to finish, they were organized and the results exceeded expectations.&rdquo;</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+          <div><span class="name">James R.</span><span class="role">Property Manager, Arlington, VA</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <blockquote>&ldquo;Reliable, honest, and thorough. They handle our weekly maintenance and seasonal openings. Worth every penny for the peace of mind.&rdquo;</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar"><i class="fas fa-user"></i></div>
+          <div><span class="name">Linda K.</span><span class="role">Homeowner, Alexandria, VA</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 9. FAQ ===== -->
+<section id="faq" class="bg-white">
+  <div class="container text-center">
+    <span class="section-tag"><i class="fas fa-question-circle"></i> FAQ</span>
+    <h2 class="section-title section-title-center">Frequently Asked Questions</h2>
+    <p class="section-subtitle section-subtitle-center">Got questions? We've got answers.</p>
+    <div class="faq-list" style="text-align: left;">
+      <div class="faq-item active">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          What areas do you service?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer"><p>We cover Northern Virginia (Fairfax, Arlington, Prince William, Loudoun), Washington DC, and select Maryland suburbs (Montgomery &amp; Prince George's counties).</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          Do your packages include chemicals?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer"><p>Yes! All our maintenance packages (Weekly &amp; Bi-Weekly) include chemicals as part of the service.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          How long does a pool opening take?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer"><p>Typically 1-2 days depending on the pool size and condition. Our team handles everything from cover removal to chemical balancing.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          Do you offer lifeguard staffing for commercial pools?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer"><p>Absolutely. We provide full turnkey lifeguard management — recruitment, training, scheduling, and supervision — for apartment complexes, HOAs, and hotels.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          Can I schedule a one-time service visit?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer"><p>Yes. Additional visits are available at $140 per visit for existing customers. One-time services for new customers are quoted based on scope.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          Are you licensed and insured?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer"><p>Yes. We are fully licensed in VA, DC, and MD, and carry comprehensive liability insurance. We are also BBB accredited and members of PHTA.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          Weekly vs Bi-Weekly — what's the difference?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer"><p>Weekly includes 15 visits per season with more frequent chemical monitoring. Bi-Weekly includes 8 visits. Both include opening and closing.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFAQ(this)">
+          Do you handle commercial health code inspections?
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="faq-answer"><p>Yes. We assist with health department compliance and can represent property owners during inspections in all three jurisdictions.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 10. CONTACT ===== -->
+<section id="contact" class="bg-aqua">
+  <div class="container text-center">
+    <span class="section-tag"><i class="fas fa-envelope"></i> Contact</span>
+    <h2 class="section-title section-title-center">Get In Touch</h2>
+    <p class="section-subtitle section-subtitle-center">Ready for hassle-free pool care? Reach out for a free quote.</p>
+    <div class="contact-grid" style="text-align: left;">
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! We will get back to you shortly.');">
+        <div class="form-row">
+          <input type="text" placeholder="John Smith" required />
+          <input type="email" placeholder="john@email.com" required />
+        </div>
+        <div class="form-row">
+          <input type="tel" placeholder="(703) 555-1234" required />
+          <select>
+            <option value="">Select service...</option>
+            <option>Residential</option>
+            <option>Commercial</option>
+            <option>Renovation</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <textarea placeholder="Tell us about your pool..." required></textarea>
+        <button type="submit" class="contact-submit"><i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i> Send Message</button>
+      </form>
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <h4>Call Us</h4>
+            <p class="phone-large">(703) 555-1234</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h4>Email</h4>
+            <p>info@apoolservices.com</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h4>Service Area</h4>
+            <p>Northern VA &middot; Washington DC &middot; Maryland</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <h4>Hours</h4>
+            <p>Mon–Sat: 7:00 AM – 7:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 11. FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">A <span>Pool</span> Services</div>
+        <p>Your trusted pool partner since 2012. Serving residential and commercial clients across Virginia, Washington DC, and Maryland with professionalism and care.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li><i class="fas fa-phone"></i> (703) 555-1234</li>
+          <li><i class="fas fa-envelope"></i> info@apoolservices.com</li>
+          <li><i class="fas fa-map-marker-alt"></i> Springfield, VA</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      A Pool Services | &copy; Copyright 2022 | Designed by Oringoo
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  window.addEventListener('scroll', function() {
+    var nav = document.getElementById('navbar');
+    if (window.scrollY > 50) { nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+    var btn = document.getElementById('scrollTop');
+    if (window.scrollY > 400) { btn.classList.add('visible'); }
+    else { btn.classList.remove('visible'); }
+  });
+
+  document.getElementById('hamburger').addEventListener('click', function() {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+
+  function toggleFAQ(btn) {
+    var item = btn.closest('.faq-item');
+    var isActive = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(function(el) { el.classList.remove('active'); });
+    if (!isActive) { item.classList.add('active'); }
+  }
+
+  var galleryLabels = [
+    'Residential Pool Maintenance',
+    'Commercial Facility Management',
+    'Pool Renovation',
+    'New Equipment Installation',
+    'Acid Wash Before & After',
+    'Safety Cover Installation'
+  ];
+  function openLightbox(index) {
+    document.getElementById('lightbox').classList.add('active');
+    document.getElementById('lightboxLabel').textContent = galleryLabels[index];
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+</body>
+</html>
