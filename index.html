@@ -1,784 +1,1515 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alexander Pool Corporation | Premium Pool Services VA, DC, MD</title>
-  <meta name="description" content="Premium pool care for residential and commercial properties in VA, DC, and MD. 20+ years of expertise. Pool cleaning, chemical balancing, repairs & more." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: { DEFAULT: '#1E3A8A', light: '#3B82F6', dark: '#1E40AF' },
-            accent: { DEFAULT: '#CA8A04', light: '#D97706' },
-            surface: '#F8FAFC'
-          },
-          fontFamily: {
-            heading: ['Cormorant', 'serif'],
-            body: ['Montserrat', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Montserrat', sans-serif; color: #1E293B; background: #F8FAFC; }
-    h1, h2, h3, h4, .font-heading { font-family: 'Cormorant', serif; }
-    .counter-value { font-variant-numeric: tabular-nums; }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-      html { scroll-behavior: auto; }
-    }
-    .stat-enter { opacity: 0; transform: translateY(20px); }
-    .stat-enter-active { opacity: 1; transform: translateY(0); transition: all 0.6s ease-out; }
-  </style>
+<!--
+  ============================================================================
+  MANASSAS POOL SERVICE — HOMEPAGE
+  Theme: "Antixor Modern Trust-First Service Design"
+  Source of content: Business profile.md (v4) + Homepage structure.md
+  Style source:      theme-style/Antixor Modern Trust-First Service Design.md
+
+  This is the re-themed build. The original prototype is untouched at
+  ../../index.html — this file is a separate design study.
+
+  ---------------------------------------------------------------- ASSETS
+  Self-contained apart from two Web fonts (Inter, with a system fallback)
+  and two local photographs in ./images/. No frameworks, no build step.
+
+  ---------------------------------------------------------------- SWAP LIST
+  1. PHONE ......... (571) 555-0138  — reserved 555-01XX fictional range.
+  2. EMAIL ......... info@manassaspoolservice.com — placeholder.
+  3. LICENSE # ..... FABRICATED. "2705128447" is a made-up number in the
+                     correct 10-digit DPOR format. Not a real licence.
+                     Replace before publication — an invented licence
+                     number is a false credential claim.
+  4. PRICES ........ Plan cards show "$______". No real levels yet.
+  5. HOURS ......... Mon–Sat 8–6 — unconfirmed.
+  6. REVIEWS ....... 3 INVENTED quotes. Replace with real, permitted ones.
+  7. PHOTOS ........ Two Wikimedia Commons photographs used as ATMOSPHERE
+                     only. Neither is a Manassas Pool Service job. Credited
+                     in the footer as the licences require.
+
+  ------------------------------------------------------- DELIBERATE OMISSIONS
+  JSON-LD omits telephone, openingHours, aggregateRating and streetAddress
+  for the reasons recorded in Business profile.md §8 and §11.
+  ---------------------------------------------------------------------------
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pool Service in Manassas, VA | Manassas Pool Service</title>
+<meta name="description" content="Pool cleaning, repair, and new construction in Manassas, Manassas Park, and Prince William County. The owner is a Certified Pool Operator, and we leave a written note after every visit.">
+<meta name="theme-color" content="#084784">
+<meta name="robots" content="noindex,nofollow"><!-- prototype only; remove at launch -->
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Manassas Pool Service">
+<meta property="og:title" content="Pool Service in Manassas, VA | Manassas Pool Service">
+<meta property="og:description" content="Weekly and bi-weekly pool maintenance, repairs, and new builds. Written note after every visit.">
+<meta property="og:locale" content="en_US">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   1. DESIGN TOKENS — Antixor
+   ========================================================================== */
+:root{
+  /* Brand */
+  --color-primary:#084784;
+  --color-primary-dark:#06366B;
+  --color-primary-deep:#082D56;
+  --color-primary-light:#EAF2FA;
+
+  /* Accent — conversion actions only */
+  --color-accent:#FFCC00;
+  --color-accent-hover:#E8B900;
+
+  /* Surfaces */
+  --color-background:#FFFFFF;
+  --color-background-soft:#F7F9FC;
+  --color-background-muted:#EDF2F7;
+
+  /* Text */
+  --color-text-primary:#14243A;
+  --color-text-secondary:#5D6B7C;
+  /* Theme spec says #7C8795, which measures 3.65:1 on white — below WCAG AA
+     for the small text it is used on. Darkened to 4.82:1 while keeping the
+     hue and the step down from secondary. The theme itself asks for ratios
+     to be verified rather than assumed. */
+  --color-text-muted:#667385;
+  --color-text-inverse:#FFFFFF;
+
+  /* Lines */
+  --color-border:#DFE5EC;
+  --color-border-strong:#CBD5E1;
+  --color-focus:#2563EB;
+
+  /* Radius */
+  --radius-sm:6px;
+  --radius-md:10px;
+  --radius-lg:14px;
+  --radius-xl:18px;
+  --radius-2xl:24px;
+  --radius-pill:9999px;
+
+  /* Elevation */
+  --shadow-card:0 2px 10px rgba(20,36,58,.05);
+  --shadow-card-hover:0 8px 24px rgba(20,36,58,.10);
+  --shadow-header:0 4px 20px rgba(20,36,58,.07);
+  --shadow-button:0 2px 6px rgba(8,71,132,.12);
+
+  /* Layout */
+  --container-max:1240px;
+  --gutter:20px;
+  --header-h:72px;
+}
+@media (min-width:768px){:root{--gutter:32px}}
+@media (min-width:1200px){:root{--gutter:40px}}
+
+/* ==========================================================================
+   2. RESET / BASE
+   ========================================================================== */
+*,*::before,*::after{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust:100%;
+}
+body{
+  margin:0;
+  background:var(--color-background);
+  color:var(--color-text-primary);
+  font-family:"Inter",ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:1rem;
+  line-height:1.6;
+  font-feature-settings:"cv02","cv03","cv04","cv11";
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{display:block;max-width:100%}
+h1,h2,h3,h4{margin:0;line-height:1.15;letter-spacing:-.02em;font-weight:700;text-wrap:balance}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:var(--color-primary);text-underline-offset:.18em}
+a:hover{color:var(--color-primary-dark)}
+:focus-visible{outline:3px solid var(--color-focus);outline-offset:2px;border-radius:3px}
+.on-dark :focus-visible,.site-footer :focus-visible{outline:3px solid var(--color-accent);outline-offset:3px}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important;
+  }
+}
+
+/* ==========================================================================
+   3. LAYOUT
+   ========================================================================== */
+.container{
+  width:min(calc(100% - 2 * var(--gutter)),var(--container-max));
+  margin-inline:auto;
+}
+.section{padding-block:48px}
+@media (min-width:768px){.section{padding-block:64px}}
+@media (min-width:1200px){.section{padding-block:88px}}
+.section--soft{background:var(--color-background-soft)}
+.section--muted{background:var(--color-background-muted)}
+
+.skip{
+  position:absolute;left:-9999px;
+}
+.skip:focus{
+  left:16px;top:16px;z-index:100;
+  padding:12px 18px;background:#fff;color:var(--color-text-primary);
+  border:2px solid var(--color-primary);border-radius:var(--radius-md);
+  font-weight:600;text-decoration:none;
+}
+
+/* Centred section introduction (theme: titles are centred when opening a group) */
+.section-head{max-width:46rem;margin:0 auto clamp(24px,3vw,36px);text-align:center}
+
+.eyebrow{
+  display:block;margin-bottom:10px;
+  font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--color-primary);
+}
+.section-title{font-size:clamp(1.75rem,3.2vw,2.5rem);letter-spacing:-.025em}
+.section-lede{margin-top:12px;color:var(--color-text-secondary);font-size:1.125rem;line-height:1.6}
+
+/* ==========================================================================
+   4. BUTTONS
+   ========================================================================== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:48px;padding:12px 22px;
+  font:inherit;font-size:.875rem;font-weight:700;letter-spacing:.01em;
+  text-decoration:none;border-radius:var(--radius-pill);
+  border:1px solid transparent;cursor:pointer;
+  transition:background-color 180ms ease,border-color 180ms ease,transform 180ms ease,box-shadow 180ms ease;
+}
+.btn-primary{
+  background:var(--color-accent);color:var(--color-text-primary);
+  border-color:var(--color-accent);box-shadow:var(--shadow-button);
+}
+.btn-primary:hover{background:var(--color-accent-hover);border-color:var(--color-accent-hover);color:var(--color-text-primary)}
+.btn-primary:active{transform:translateY(1px)}
+.btn-secondary{
+  background:#fff;color:var(--color-text-primary);border-color:var(--color-border-strong);
+}
+.btn-secondary:hover{background:var(--color-background-soft);border-color:var(--color-primary);color:var(--color-text-primary)}
+.btn-navy{
+  background:var(--color-primary);color:#fff;border-color:var(--color-primary);
+}
+.btn-navy:hover{background:var(--color-primary-dark);border-color:var(--color-primary-dark);color:#fff}
+.btn-block{width:100%}
+.btn svg{flex:none}
+
+/* ==========================================================================
+   5. HEADER
+   ========================================================================== */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:#fff;border-bottom:1px solid var(--color-border);
+  box-shadow:var(--shadow-header);
+}
+.header-inner{
+  display:flex;align-items:center;gap:16px;
+  min-height:var(--header-h);
+}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--color-text-primary)}
+.brand:hover{color:var(--color-text-primary)}
+.brand svg{color:var(--color-primary);flex:none}
+.brand-name{display:block;font-size:1rem;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.brand-sub{display:block;font-size:.6875rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--color-text-muted);line-height:1.3}
+
+.nav{display:none;margin-left:auto;align-items:center;gap:4px}
+.nav a{
+  display:inline-block;padding:10px 12px;
+  font-size:.875rem;font-weight:600;color:var(--color-text-secondary);
+  text-decoration:none;border-radius:var(--radius-sm);
+  transition:color 180ms ease,background-color 180ms ease;
+}
+.nav a:hover{color:var(--color-primary);background:var(--color-primary-light)}
+
+.header-actions{display:flex;align-items:center;gap:10px;margin-left:auto}
+.nav + .header-actions{margin-left:0}
+.header-phone{
+  display:none;align-items:center;gap:7px;
+  font-size:.875rem;font-weight:700;color:var(--color-text-primary);text-decoration:none;white-space:nowrap;
+}
+.header-phone:hover{color:var(--color-primary)}
+@media (min-width:1024px){
+  .nav{display:flex}
+  .header-phone{display:inline-flex}
+}
+
+/* ==========================================================================
+   6. HERO
+   ========================================================================== */
+.hero{padding-block:clamp(32px,5vw,64px) clamp(40px,6vw,80px)}
+.hero-grid{
+  display:grid;gap:clamp(32px,4vw,56px);
+  align-items:center;
+}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  max-width:100%;padding:6px 14px;margin-bottom:18px;
+  background:var(--color-primary-light);color:var(--color-primary-dark);
+  border-radius:var(--radius-pill);
+  font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  line-height:1.4;
+}
+.hero-eyebrow svg{color:var(--color-primary)}
+h1{
+  font-size:clamp(2.125rem,5vw,3.5rem);
+  font-weight:800;letter-spacing:-.035em;line-height:1.06;
+}
+.hero-lede{
+  margin-top:18px;max-width:34rem;
+  font-size:clamp(1rem,1.4vw,1.125rem);line-height:1.65;
+  color:var(--color-text-secondary);
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero-cta .btn{min-height:52px;padding-inline:26px}
+
+.hero-trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;padding:0}
+.hero-trust li{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.8125rem;font-weight:600;color:var(--color-text-secondary);
+}
+.hero-trust svg{color:var(--color-primary);flex:none}
+
+.hero-verify{margin-top:16px;font-size:.8125rem;color:var(--color-text-muted)}
+.hero-verify a{font-weight:600}
+
+/* Image composition with the floating trust badge */
+.hero-figure{position:relative;margin:0}
+.hero-photo{
+  width:100%;height:auto;aspect-ratio:4/3;
+  object-fit:cover;object-position:center;
+  border-radius:var(--radius-2xl);
+  background:var(--color-background-muted);
+}
+.hero-badge{
+  position:absolute;left:16px;bottom:-18px;
+  display:flex;align-items:center;gap:12px;
+  padding:14px 18px;
+  background:#fff;border-radius:var(--radius-lg);
+  box-shadow:0 8px 24px rgba(20,36,58,.14);
+}
+@media (min-width:640px){.hero-badge{left:-22px;bottom:24px}}
+.hero-badge__icon{
+  display:grid;place-items:center;flex:none;
+  width:42px;height:42px;border-radius:50%;
+  background:var(--color-primary);color:#fff;
+}
+.hero-badge__title{display:block;font-size:.875rem;font-weight:700;line-height:1.2}
+.hero-badge__sub{display:block;font-size:.75rem;color:var(--color-text-muted);line-height:1.3}
+
+/* ==========================================================================
+   7. BENEFITS
+   ========================================================================== */
+.benefits{
+  display:grid;gap:24px;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+@media (min-width:900px){.benefits{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.benefit{display:flex;gap:14px;align-items:flex-start}
+.benefit__icon{
+  display:grid;place-items:center;flex:none;
+  width:44px;height:44px;border-radius:var(--radius-md);
+  background:var(--color-primary-light);color:var(--color-primary);
+}
+@media (max-width:479px){.benefits{grid-template-columns:1fr}}
+.benefit h3{font-size:.9375rem;font-weight:700;letter-spacing:-.01em}
+.benefit p{margin-top:4px;font-size:.8125rem;line-height:1.55;color:var(--color-text-secondary)}
+
+/* ==========================================================================
+   8. SERVICES — inverted navy panel (signature component)
+   ========================================================================== */
+.services-panel{
+  background:var(--color-primary);
+  color:#fff;
+  border-radius:var(--radius-2xl);
+  padding:clamp(24px,3.4vw,44px);
+}
+.services-layout{display:grid;gap:clamp(24px,3vw,36px)}
+@media (min-width:1024px){
+  .services-layout{grid-template-columns:minmax(0,.8fr) minmax(0,1.75fr);align-items:start}
+}
+.services-intro .eyebrow{color:#9CC4EC}
+.services-panel__heading{
+  color:#fff;font-size:clamp(1.6rem,2.6vw,2.25rem);
+  letter-spacing:-.025em;line-height:1.15;margin-bottom:14px;
+}
+.services-panel__description{
+  color:rgba(255,255,255,.86);font-size:.9375rem;line-height:1.65;
+}
+.services-intro .btn{margin-top:24px}
+.services-intro__note{
+  margin-top:18px;font-size:.8125rem;color:#BCD6EE;line-height:1.5;
+}
+.services-grid{
+  display:grid;gap:10px;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+@media (min-width:768px){.services-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:479px){.services-grid{grid-template-columns:1fr}}
+
+.service-card{
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+  padding:18px;
+  background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-md);
+  transition:box-shadow 180ms ease,transform 180ms ease,border-color 180ms ease;
+}
+.service-card:hover{border-color:#B9CDE2;box-shadow:var(--shadow-card-hover);transform:translateY(-2px)}
+.service-card__icon{width:28px;height:28px;color:var(--color-primary)}
+.service-card__title{margin:0;font-size:1rem;font-weight:700;line-height:1.35;color:var(--color-text-primary);letter-spacing:-.01em}
+.service-card__description{margin:0;font-size:.8125rem;line-height:1.55;color:var(--color-text-secondary)}
+
+/* ==========================================================================
+   9. PACKAGES
+   ========================================================================== */
+.plans{display:grid;gap:18px;align-items:stretch}
+@media (min-width:860px){.plans{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.plan{
+  display:flex;flex-direction:column;height:100%;
+  padding:26px 24px;
+  background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-xl);
+  box-shadow:var(--shadow-card);
+}
+.plan--featured{
+  border:2px solid var(--color-primary);
+  box-shadow:0 10px 30px rgba(8,71,132,.12);
+}
+.plan__badge{
+  align-self:flex-start;margin-bottom:14px;
+  padding:5px 12px;
+  background:var(--color-accent);color:var(--color-text-primary);
+  border-radius:var(--radius-pill);
+  font-size:.6875rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
+}
+.plan__badge--ghost{visibility:hidden}
+.plan__name{font-size:1.375rem;letter-spacing:-.02em}
+.plan__desc{margin-top:6px;font-size:.875rem;line-height:1.5;color:var(--color-text-secondary);min-height:2.7em}
+.plan__price{
+  margin-top:18px;padding-top:18px;border-top:1px solid var(--color-border);
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;
+}
+.plan__price-label,.plan__price-per{font-size:.8125rem;color:var(--color-text-secondary)}
+.plan__price-num{font-size:2rem;font-weight:800;letter-spacing:-.03em;color:var(--color-text-primary);font-variant-numeric:tabular-nums}
+.plan__price-num--sm{font-size:1.25rem}
+.ph{border-bottom:2px dotted var(--color-accent-hover);font-variant-numeric:tabular-nums}
+.plan__list{margin-top:18px;margin-bottom:22px;display:grid;gap:10px}
+.plan__list li{display:flex;gap:9px;font-size:.875rem;line-height:1.5;color:var(--color-text-secondary)}
+.plan__list svg{flex:none;margin-top:3px;color:var(--color-primary)}
+.plan .btn{margin-top:auto}
+.plans-note{
+  max-width:56rem;margin:22px auto 0;text-align:center;
+  font-size:.875rem;line-height:1.6;color:var(--color-text-secondary);
+}
+.plans-note b{color:var(--color-text-primary)}
+
+/* ==========================================================================
+   10. COMMERCIAL FEATURE
+   ========================================================================== */
+.feature-grid{
+  display:grid;overflow:hidden;
+  border-radius:var(--radius-xl);
+  background:var(--color-primary);
+}
+@media (min-width:900px){.feature-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.feature-grid__image{
+  width:100%;height:100%;min-height:280px;
+  object-fit:cover;object-position:center;
+  background:var(--color-primary-dark);
+}
+.feature-grid__content{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(24px,4vw,48px);
+  color:#fff;
+}
+.feature-grid__content .eyebrow{color:#9CC4EC}
+.feature-grid__content h2{color:#fff;font-size:clamp(1.55rem,2.5vw,2.125rem);letter-spacing:-.025em}
+.feature-grid__content > p{margin-top:14px;color:rgba(255,255,255,.86);font-size:.9375rem;line-height:1.65}
+.checklist{display:grid;gap:14px;margin-top:24px}
+.checklist li{display:flex;gap:11px;font-size:.875rem;line-height:1.5;color:#EAF2FA}
+.checklist svg{flex:none;margin-top:2px;color:var(--color-accent)}
+.checklist b{font-weight:700;color:#fff}
+.checklist span{display:block;font-size:.8125rem;color:#B9D3EE;margin-top:2px}
+.feature-grid__content .btn{margin-top:26px;align-self:flex-start}
+.feature-grid__fine{margin-top:14px;font-size:.75rem;color:#9CC4EC;line-height:1.5}
+
+/* ==========================================================================
+   11. PROCESS
+   ========================================================================== */
+.steps{
+  display:grid;gap:28px 24px;
+  grid-template-columns:1fr;
+}
+@media (min-width:600px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1024px){.steps{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.step{position:relative}
+.step__num{
+  display:grid;place-items:center;
+  width:38px;height:38px;margin-bottom:14px;
+  background:var(--color-primary);color:#fff;
+  border-radius:50%;
+  font-size:.8125rem;font-weight:700;font-variant-numeric:tabular-nums;
+}
+.step h3{font-size:.9375rem;font-weight:700;line-height:1.35;letter-spacing:-.01em}
+.step p{margin-top:6px;font-size:.8125rem;line-height:1.55;color:var(--color-text-secondary)}
+.step-note{
+  margin-top:36px;padding:18px 22px;
+  background:var(--color-primary-light);
+  border-left:3px solid var(--color-primary);
+  border-radius:0 var(--radius-md) var(--radius-md) 0;
+  font-size:.875rem;line-height:1.6;color:var(--color-text-primary);
+}
+
+/* ==========================================================================
+   12. COPY / AREA
+   ========================================================================== */
+.prose{max-width:44rem;display:grid;gap:16px}
+.prose p{font-size:1rem;line-height:1.7;color:var(--color-text-secondary)}
+.area-list{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;padding:0;margin-top:24px}
+.area-list li{
+  padding:9px 18px;
+  background:#fff;border:1px solid var(--color-border-strong);border-radius:var(--radius-pill);
+  font-size:.875rem;font-weight:600;color:var(--color-text-primary);
+}
+.area-note{margin-top:18px;text-align:center;font-size:.875rem;color:var(--color-text-secondary)}
+
+/* ==========================================================================
+   13. BEFORE / AFTER
+   ========================================================================== */
+.ba{display:grid;gap:16px}
+@media (min-width:600px){.ba{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.ba-tile{
+  display:grid;place-items:center;gap:8px;
+  aspect-ratio:16/10;padding:18px;text-align:center;
+  background:var(--color-background-soft);
+  border:2px dashed var(--color-border-strong);
+  border-radius:var(--radius-lg);
+  color:var(--color-text-muted);
+  font-size:.8125rem;
+}
+.ba-tile svg{color:#A9BACB}
+.ba-tile strong{display:block;font-size:.875rem;font-weight:700;color:var(--color-text-secondary)}
+
+/* ==========================================================================
+   14. TESTIMONIALS
+   ========================================================================== */
+.quotes{display:grid;gap:18px}
+@media (min-width:860px){.quotes{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.quote{
+  display:flex;flex-direction:column;gap:16px;
+  padding:26px 24px;
+  background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-card);
+}
+.quote__mark{color:var(--color-primary-light)}
+.quote p{font-size:.9375rem;line-height:1.65;color:var(--color-text-primary)}
+.quote footer{
+  margin-top:auto;padding-top:16px;border-top:1px solid var(--color-border);
+  font-size:.8125rem;color:var(--color-text-muted);
+}
+.quote footer b{display:block;font-size:.875rem;font-weight:700;color:var(--color-text-primary)}
+
+/* ==========================================================================
+   15. FAQ
+   ========================================================================== */
+.faq{max-width:52rem;margin-inline:auto;background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-xl);overflow:hidden}
+.faq details{border-bottom:1px solid var(--color-border)}
+.faq details:last-child{border-bottom:0}
+.faq summary{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+  padding:20px 24px;cursor:pointer;list-style:none;
+  font-size:1rem;font-weight:600;letter-spacing:-.01em;color:var(--color-text-primary);
+  transition:background-color 180ms ease;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{background:var(--color-background-soft)}
+.faq summary::after{
+  content:"";flex:none;width:9px;height:9px;margin-top:7px;
+  border-right:2px solid var(--color-primary);border-bottom:2px solid var(--color-primary);
+  transform:rotate(45deg);transition:transform 180ms ease;
+}
+.faq details[open] summary::after{transform:rotate(-135deg)}
+.faq-a{padding:0 24px 22px;max-width:46rem;font-size:.9375rem;line-height:1.7;color:var(--color-text-secondary)}
+.faq-a p + p{margin-top:12px}
+
+/* ==========================================================================
+   16. CONTACT
+   ========================================================================== */
+.contact-grid{display:grid;gap:24px;align-items:start}
+@media (min-width:960px){.contact-grid{grid-template-columns:1.25fr .75fr;gap:32px}}
+.form-card{
+  padding:clamp(22px,3vw,32px);
+  background:#fff;border:1px solid var(--color-border);border-radius:var(--radius-xl);
+  box-shadow:var(--shadow-card);
+}
+.form-grid{display:grid;gap:18px}
+@media (min-width:600px){.form-grid{grid-template-columns:1fr 1fr}.span-2{grid-column:span 2}}
+.field{display:grid;gap:7px}
+.field label{font-size:.8125rem;font-weight:600;color:var(--color-text-primary)}
+.req{color:#B3261E}
+.opt{font-weight:500;color:var(--color-text-muted)}
+.field input,.field select,.field textarea{
+  width:100%;min-height:48px;padding:12px 15px;
+  background:#fff;color:var(--color-text-primary);
+  border:1px solid var(--color-border-strong);border-radius:var(--radius-md);
+  font:inherit;font-size:.9375rem;
+  transition:border-color 180ms ease,box-shadow 180ms ease;
+}
+.field textarea{min-height:120px;resize:vertical;line-height:1.6}
+.field input::placeholder,.field textarea::placeholder{color:var(--color-text-muted);opacity:1}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible{
+  outline:3px solid rgba(37,99,235,.25);outline-offset:2px;border-color:var(--color-focus);
+}
+.form-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:4px}
+.form-note{font-size:.75rem;line-height:1.5;color:var(--color-text-muted)}
+.form-status{margin-top:14px;font-size:.875rem;font-weight:600;color:var(--color-primary)}
+.form-status[hidden]{display:none}
+
+.contact-aside{
+  padding:26px 24px;
+  background:var(--color-primary);color:#fff;
+  border-radius:var(--radius-xl);
+}
+.contact-aside h3{color:#fff;font-size:1.125rem}
+.contact-aside > p{margin-top:10px;font-size:.875rem;line-height:1.6;color:rgba(255,255,255,.86)}
+.contact-aside .tel{
+  display:inline-flex;align-items:center;gap:10px;margin-top:16px;
+  font-size:1.375rem;font-weight:800;letter-spacing:-.02em;
+  color:#fff;text-decoration:none;font-variant-numeric:tabular-nums;
+}
+.contact-aside .tel:hover{color:var(--color-accent)}
+.contact-aside dl{margin:20px 0 0;display:grid;gap:14px}
+.contact-aside dt{font-size:.6875rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9CC4EC}
+.contact-aside dd{margin:3px 0 0;font-size:.875rem;line-height:1.5;color:#EAF2FA}
+.contact-aside dd a{color:#fff}
+.contact-aside dd a:hover{color:var(--color-accent)}
+
+/* ==========================================================================
+   17. FOOTER
+   ========================================================================== */
+.site-footer{background:var(--color-primary-deep);color:#C9DDF0;font-size:.875rem}
+.footer-inner{
+  display:grid;gap:36px;
+  padding-block:clamp(40px,5vw,64px);
+}
+@media (min-width:768px){.footer-inner{grid-template-columns:1.6fr 1fr 1fr 1fr;gap:32px}}
+.site-footer .brand{color:#fff}
+.site-footer .brand svg{color:var(--color-accent)}
+.site-footer .brand-sub{color:#8FB4D8}
+.site-footer p{margin-top:16px;max-width:26rem;color:#B9D3EE;line-height:1.6}
+.footer-col h2{
+  font-size:.6875rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+  color:#8FB4D8;margin-bottom:14px;
+}
+.footer-col ul{display:grid;gap:10px}
+.footer-col a{color:#EAF2FA;text-decoration:none}
+.footer-col a:hover{color:var(--color-accent);text-decoration:underline}
+.footer-col .tel-link{font-weight:800;font-size:1rem;color:#fff;font-variant-numeric:tabular-nums}
+.footer-creds{display:grid;gap:10px;margin-top:18px}
+.footer-creds li{display:flex;gap:9px;font-size:.8125rem;color:#D6E7F7}
+.footer-creds svg{flex:none;margin-top:2px;color:var(--color-accent)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.14);
+  padding-block:20px;
+  display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;
+  font-size:.75rem;color:#8FB4D8;
+}
+.footer-bottom ul{display:flex;flex-wrap:wrap;gap:20px}
+.footer-bottom a{color:#C9DDF0}
+.footer-bottom a:hover{color:var(--color-accent)}
+.credits{margin-top:10px;font-size:.6875rem;line-height:1.6;color:#7FA5C9}
+.credits a{color:#9CC4EC}
+
+/* ==========================================================================
+   18. MOBILE CALL BAR
+   ========================================================================== */
+.callbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  display:flex;gap:10px;align-items:center;
+  padding:10px max(12px,env(safe-area-inset-left)) calc(10px + env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-right));
+  background:#fff;border-top:1px solid var(--color-border);
+  box-shadow:0 -4px 20px rgba(20,36,58,.10);
+}
+.callbar .btn{flex:1}
+.callbar .btn-secondary{flex:0 0 auto;padding-inline:18px}
+@media (min-width:900px){.callbar{display:none}}
+@media (max-width:899px){body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}}
+@media (max-width:520px){
+  .hero-cta{display:grid;grid-template-columns:1fr}
+  .hero-cta .btn{width:100%}
+  .form-actions{display:grid;grid-template-columns:1fr}
+  .form-actions .btn{width:100%}
+}
+</style>
 </head>
 <body>
 
-  <!-- ===== NAVIGATION ===== -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
-        <a href="#" class="flex items-center gap-2">
-          <svg class="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12h1m16 0h1M12 3v1m0 16v1M8 12a4 4 0 118 0 4 4 0 01-8 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l2 2"/></svg>
-          <div>
-            <div class="font-heading text-xl font-bold text-primary leading-tight">Alexander Pool</div>
-            <div class="text-[10px] tracking-widest uppercase text-primary/60 -mt-1">Corporation</div>
-          </div>
-        </a>
-        <div class="hidden lg:flex items-center gap-8">
-          <a href="#services" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors duration-200 cursor-pointer">Services</a>
-          <a href="#why-us" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors duration-200 cursor-pointer">Why Us</a>
-          <a href="#about" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors duration-200 cursor-pointer">About</a>
-          <a href="#commercial" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors duration-200 cursor-pointer">Commercial</a>
-          <a href="#pricing" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors duration-200 cursor-pointer">Pricing</a>
-          <a href="#contact" class="text-sm font-medium text-gray-700 hover:text-primary transition-colors duration-200 cursor-pointer">Contact</a>
-        </div>
-        <div class="flex items-center gap-4">
-          <a href="tel:+17035550123" class="hidden sm:flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-light transition-colors duration-200 cursor-pointer">
-            <i data-lucide="phone" class="w-4 h-4"></i>
-            (703) 555-0123
-          </a>
-          <a href="#contact" class="bg-accent hover:bg-accent-light text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer shadow-md hover:shadow-lg">
-            Get a Quote
-          </a>
-          <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-700 hover:text-primary transition-colors duration-200 cursor-pointer" aria-label="Open menu">
-            <i data-lucide="menu" class="w-6 h-6"></i>
-          </button>
-        </div>
-      </div>
-    </div>
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-gray-100 bg-white">
-      <div class="px-4 py-4 space-y-3">
-        <a href="#services" class="block text-sm font-medium text-gray-700 hover:text-primary py-2 cursor-pointer">Services</a>
-        <a href="#why-us" class="block text-sm font-medium text-gray-700 hover:text-primary py-2 cursor-pointer">Why Us</a>
-        <a href="#about" class="block text-sm font-medium text-gray-700 hover:text-primary py-2 cursor-pointer">About</a>
-        <a href="#commercial" class="block text-sm font-medium text-gray-700 hover:text-primary py-2 cursor-pointer">Commercial</a>
-        <a href="#pricing" class="block text-sm font-medium text-gray-700 hover:text-primary py-2 cursor-pointer">Pricing</a>
-        <a href="#contact" class="block text-sm font-medium text-primary py-2 cursor-pointer">Contact</a>
-        <a href="tel:+17035550123" class="flex items-center gap-2 text-sm font-medium text-primary py-2 cursor-pointer">
-          <i data-lucide="phone" class="w-4 h-4"></i>
-          (703) 555-0123
-        </a>
-      </div>
-    </div>
-  </nav>
+<a class="skip" href="#main">Skip to main content</a>
 
-  <!-- ===== HERO ===== -->
-  <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-[#0F1D4A]"></div>
-    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 25% 50%, rgba(255,255,255,0.3) 0%, transparent 50%), radial-gradient(circle at 75% 30%, rgba(202,138,4,0.2) 0%, transparent 40%);"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-      <div class="max-w-4xl">
-        <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur rounded-full px-4 py-2 mb-8 border border-white/10">
-          <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
-          <span class="text-white/80 text-sm font-medium">Serving VA &bull; DC &bull; MD since 2004</span>
-        </div>
-        <h1 class="font-heading text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white leading-[1.05] tracking-tight">
-          Step into excellence<br />
-          <span class="text-accent">with Alexander Pool</span>
-        </h1>
-        <p class="mt-8 text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed font-light">
-          We provide exceptional pool solutions for both residential and commercial properties in VA, DC, and MD.
-        </p>
-        <div class="mt-10 flex flex-col sm:flex-row gap-4">
-          <a href="#contact" class="bg-accent hover:bg-accent-light text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-200 cursor-pointer shadow-xl hover:shadow-2xl text-center">
-            Get Your Free Consultation
-          </a>
-          <a href="#services" class="bg-white/10 backdrop-blur hover:bg-white/20 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-200 cursor-pointer border border-white/20 text-center">
-            View Our Services
-          </a>
-        </div>
-      </div>
-      <div class="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-6">
-        <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10 text-center">
-          <div class="text-3xl font-bold text-white font-heading counter-value" data-target="20">0</div>
-          <div class="text-white/70 text-sm mt-1">Years of<br />Expertise</div>
-        </div>
-        <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10 text-center">
-          <div class="text-3xl font-bold text-white font-heading counter-value" data-target="1000">0</div>
-          <div class="text-white/70 text-sm mt-1">Satisfied<br />Clients</div>
-        </div>
-        <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10 text-center">
-          <div class="text-3xl font-bold text-white font-heading counter-value" data-target="15">0</div>
-          <div class="text-white/70 text-sm mt-1">Certified<br />Techs</div>
-        </div>
-        <div class="bg-white/10 backdrop-blur rounded-2xl p-6 border border-white/10 text-center">
-          <div class="text-3xl font-bold text-white font-heading">99%</div>
-          <div class="text-white/70 text-sm mt-1">Satisfaction<br />Rate</div>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- ============================== HEADER ============================== -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="#" aria-label="Manassas Pool Service — home">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M12 2.6c3.4 3.7 5.6 6.4 5.6 9.2A5.6 5.6 0 0 1 12 17.4a5.6 5.6 0 0 1-5.6-5.6c0-2.8 2.2-5.5 5.6-9.2Z"/>
+        <path d="M2.6 20.4c1.4 0 1.9-1.2 3.3-1.2s1.9 1.2 3.3 1.2 1.9-1.2 3.3-1.2 1.9 1.2 3.3 1.2 1.9-1.2 3.3-1.2"/>
+      </svg>
+      <span>
+        <span class="brand-name">Manassas Pool Service</span>
+        <span class="brand-sub">Manassas Park, VA</span>
+      </span>
+    </a>
 
-  <!-- ===== TRUST BAR ===== -->
-  <section class="py-16 bg-white border-y border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <p class="text-center text-gray-500 text-sm font-medium uppercase tracking-widest mb-10">Trusted by homeowners, builders &amp; property managers across the DMV</p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div class="text-center stat-item">
-          <div class="text-4xl font-bold text-primary font-heading counter-value" data-target="20">0</div>
-          <div class="text-gray-500 text-sm mt-1 font-medium">Years of Experience</div>
-        </div>
-        <div class="text-center stat-item">
-          <div class="text-4xl font-bold text-primary font-heading counter-value" data-target="1000">0</div>
-          <div class="text-gray-500 text-sm mt-1 font-medium">Satisfied Clients</div>
-        </div>
-        <div class="text-center stat-item">
-          <div class="text-4xl font-bold text-primary font-heading counter-value" data-target="15">0</div>
-          <div class="text-gray-500 text-sm mt-1 font-medium">Certified Technicians</div>
-        </div>
-        <div class="text-center stat-item">
-          <div class="text-4xl font-bold text-primary font-heading">99%</div>
-          <div class="text-gray-500 text-sm mt-1 font-medium">Client Satisfaction Rate</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <nav class="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#packages">Packages</a>
+      <a href="#commercial">Commercial</a>
+      <a href="#areas">Service area</a>
+      <a href="#faq">FAQ</a>
+    </nav>
 
-  <!-- ===== TOP POOL SERVICES ===== -->
-  <section id="services" class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-4">What We Offer</span>
-        <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary leading-tight">Top Pool Services</h2>
-        <p class="mt-4 text-gray-600 text-lg max-w-2xl mx-auto">Achieve the perfect pool all year round with our customized plans. Let our dedicated team handle the hard work so you can relax and enjoy a flawless swimming experience.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="group bg-white rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden">
-          <div class="aspect-[4/3] bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-400 text-sm font-medium">Image Placeholder</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Pool Opening</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">Start the season right with expert opening services.</p>
-            <a href="#" class="inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all duration-200 cursor-pointer">
-              Find Out More
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-          </div>
-        </div>
-        <div class="group bg-white rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden">
-          <div class="aspect-[4/3] bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-400 text-sm font-medium">Image Placeholder</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Pool Maintenance</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">Regular cleaning, chemical balancing &amp; care.</p>
-            <a href="#" class="inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all duration-200 cursor-pointer">
-              Find Out More
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-          </div>
-        </div>
-        <div class="group bg-white rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden">
-          <div class="aspect-[4/3] bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-400 text-sm font-medium">Image Placeholder</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Pool Closing</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">Safe, thorough winterization for off-season protection.</p>
-            <a href="#" class="inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all duration-200 cursor-pointer">
-              Find Out More
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-          </div>
-        </div>
-        <div class="group bg-white rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden">
-          <div class="aspect-[4/3] bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-400 text-sm font-medium">Image Placeholder</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Acid / Pressure Wash</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">Restore neglected pools with deep cleaning.</p>
-            <a href="#" class="inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all duration-200 cursor-pointer">
-              Find Out More
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-          </div>
-        </div>
-        <div class="group bg-white rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden">
-          <div class="aspect-[4/3] bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-400 text-sm font-medium">Image Placeholder</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Repairs &amp; Renovation</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">Equipment fixes, structural restorations &amp; resurfacing.</p>
-            <a href="#" class="inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all duration-200 cursor-pointer">
-              Find Out More
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-          </div>
-        </div>
-        <div class="group bg-white rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden">
-          <div class="aspect-[4/3] bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-400 text-sm font-medium">Image Placeholder</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Equipment Installation</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">Pumps, heaters, filters, lights &amp; timers.</p>
-            <a href="#" class="inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all duration-200 cursor-pointer">
-              Find Out More
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-          </div>
-        </div>
-        <div class="group bg-white rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden">
-          <div class="aspect-[4/3] bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-400 text-sm font-medium">Image Placeholder</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Pool Covers</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">Safety covers &amp; fence installation.</p>
-            <a href="#" class="inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all duration-200 cursor-pointer">
-              Find Out More
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-          </div>
-        </div>
-        <div class="group bg-white rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden">
-          <div class="aspect-[4/3] bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-400 text-sm font-medium">Image Placeholder</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Pool Caulking</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">Crack repair, sealing &amp; waterproofing.</p>
-            <a href="#" class="inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all duration-200 cursor-pointer">
-              Find Out More
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-          </div>
-        </div>
-        <div class="group bg-white rounded-2xl border border-gray-100 hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden">
-          <div class="aspect-[4/3] bg-gray-200 flex items-center justify-center">
-            <span class="text-gray-400 text-sm font-medium">Image Placeholder</span>
-          </div>
-          <div class="p-6">
-            <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Pool Inspection</h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">Thorough assessment &amp; compliance check.</p>
-            <a href="#" class="inline-flex items-center gap-1 text-primary font-semibold text-sm group-hover:gap-2 transition-all duration-200 cursor-pointer">
-              Find Out More
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
-            </a>
-          </div>
-        </div>
-      </div>
+    <div class="header-actions">
+      <a class="header-phone" href="tel:+15715550138">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15.5 21A12.5 12.5 0 0 1 3 8.5V6a2 2 0 0 1 2-2h2.2a1 1 0 0 1 1 .8l.8 3a1 1 0 0 1-.3 1L7 10.4a11 11 0 0 0 5.6 5.6l1.6-1.7a1 1 0 0 1 1-.3l3 .8a1 1 0 0 1 .8 1V19a2 2 0 0 1-2 2Z"/></svg>
+        (571) 555-0138
+      </a>
+      <a class="btn btn-primary" href="tel:+15715550138">Call now</a>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- ===== WHY CHOOSE US ===== -->
-  <section id="why-us" class="py-24 lg:py-32 bg-primary">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-4">Why Choose Us</span>
-        <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">Why Alexander Pool Corporation?</h2>
-        <p class="mt-4 text-white/70 text-lg max-w-2xl mx-auto">We're not just pool cleaners — we're passionate pool professionals.</p>
-      </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/10 hover:bg-white/15 transition-all duration-300 cursor-pointer">
-          <div class="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mb-5">
-            <i data-lucide="microscope" class="w-7 h-7 text-accent"></i>
-          </div>
-          <h3 class="font-heading text-2xl font-bold text-white mb-3">Extreme Restoration Experts</h3>
-          <p class="text-white/70 leading-relaxed text-sm">Specializing in acid and pressure washing for pools that others walk away from. If your pool is dark, black, or has been improperly winterized, we have the expertise to restore it to pristine condition.</p>
-        </div>
-        <div class="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/10 hover:bg-white/15 transition-all duration-300 cursor-pointer">
-          <div class="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mb-5">
-            <i data-lucide="clipboard-check" class="w-7 h-7 text-accent"></i>
-          </div>
-          <h3 class="font-heading text-2xl font-bold text-white mb-3">Technical Compliance Specialists</h3>
-          <p class="text-white/70 leading-relaxed text-sm">We manage the complexities of local health department regulations so property managers and HOA boards can breathe easy. Our team ensures your commercial facility passes every inspection.</p>
-        </div>
-        <div class="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/10 hover:bg-white/15 transition-all duration-300 cursor-pointer">
-          <div class="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mb-5">
-            <i data-lucide="shield" class="w-7 h-7 text-accent"></i>
-          </div>
-          <h3 class="font-heading text-2xl font-bold text-white mb-3">Safety-First Philosophy</h3>
-          <p class="text-white/70 leading-relaxed text-sm">Safety isn't an afterthought — it's built into everything we do. From custom safety covers and fences to certified lifeguard staffing, we prioritize accident prevention above all else.</p>
-        </div>
-        <div class="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/10 hover:bg-white/15 transition-all duration-300 cursor-pointer">
-          <div class="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center mb-5">
-            <i data-lucide="crown" class="w-7 h-7 text-accent"></i>
-          </div>
-          <h3 class="font-heading text-2xl font-bold text-white mb-3">Premium White-Glove Service</h3>
-          <p class="text-white/70 leading-relaxed text-sm">From personalized maintenance plans to full-service commercial management, we handle every detail so you can enjoy your pool without the hassle.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+<main id="main">
 
-  <!-- ===== ABOUT US ===== -->
-  <section id="about" class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
+  <!-- =============================== HERO ============================= -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
         <div>
-          <span class="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-4">About Us</span>
-          <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary leading-tight">Alexander Pool Corporation</h2>
-          <p class="mt-6 text-gray-600 leading-relaxed">
-            Alexander Pool Corporation specializes in premium pool care for homeowners and businesses in the DC Metropolitan area, covering Northern Virginia and Maryland. We deliver pool cleaning, accurate chemical balancing, skilled equipment repairs, and seasonal maintenance services. Our solutions ensure your pool stays safe, clean, and efficient year-round. Trust us for stress-free, professional pool management.
+          <span class="hero-eyebrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            Manassas &middot; Manassas Park &middot; Prince William County
+          </span>
+
+          <h1>Pool service in Manassas, VA</h1>
+
+          <p class="hero-lede">
+            Weekly and bi-weekly maintenance, repairs, and new builds. We show up on
+            schedule, keep the water balanced, and leave a note telling you exactly what
+            we did &mdash; and what we found.
           </p>
-          <a href="#" class="mt-8 inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 cursor-pointer shadow-lg hover:shadow-xl">
-            More About Us
-            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="tel:+15715550138">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15.5 21A12.5 12.5 0 0 1 3 8.5V6a2 2 0 0 1 2-2h2.2a1 1 0 0 1 1 .8l.8 3a1 1 0 0 1-.3 1L7 10.4a11 11 0 0 0 5.6 5.6l1.6-1.7a1 1 0 0 1 1-.3l3 .8a1 1 0 0 1 .8 1V19a2 2 0 0 1-2 2Z"/></svg>
+              Call (571) 555-0138
+            </a>
+            <a class="btn btn-secondary" href="#contact">Get a free quote</a>
+          </div>
+
+          <ul class="hero-trust">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+              Virginia Licensed Contractor
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+              CPO-certified owner
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+              Insured
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+              All equipment brands
+            </li>
+          </ul>
+
+          <p class="hero-verify">
+            Licensed in Virginia &middot; Lic. #2705128447 &middot;
+            <a href="https://dporweb.dpor.virginia.gov/LicenseLookup/Search" rel="noopener">verify on DPOR &#8599;</a>
+          </p>
+        </div>
+
+        <figure class="hero-figure">
+          <img class="hero-photo"
+               src="images/hero-pool.jpg"
+               width="1150" height="862"
+               alt="Sunny residential backyard pool with clear blue water and a landscaped stone deck."
+               fetchpriority="high" decoding="async">
+          <figcaption class="hero-badge">
+            <span class="hero-badge__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5 7 21l5-2.5 5 2.5-1.5-7.5"/></svg>
+            </span>
+            <span>
+              <span class="hero-badge__title">Owner is a Certified Pool Operator</span>
+              <span class="hero-badge__sub">Required on site for commercial pools</span>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= BENEFITS =========================== -->
+  <section class="section section--soft">
+    <div class="container">
+      <ul class="benefits">
+        <li class="benefit">
+          <span class="benefit__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          </span>
+          <div>
+            <h3>On the day we promise</h3>
+            <p>Same day, same crew. If that changes, you hear it from us first.</p>
+          </div>
+        </li>
+        <li class="benefit">
+          <span class="benefit__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15 3h4a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4"/><rect x="9" y="2" width="6" height="4" rx="1"/><path d="M8.5 12h.01M8.5 16h.01M12 12h3.5M12 16h3.5"/></svg>
+          </span>
+          <div>
+            <h3>A note every visit</h3>
+            <p>Date, time, water readings, work done. On your door before we leave.</p>
+          </div>
+        </li>
+        <li class="benefit">
+          <span class="benefit__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg>
+          </span>
+          <div>
+            <h3>Every brand repaired</h3>
+            <p>Pumps, heaters, filters, lights, timers, and automation.</p>
+          </div>
+        </li>
+        <li class="benefit">
+          <span class="benefit__icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M10 21v-5h4v5"/></svg>
+          </span>
+          <div>
+            <h3>Home and commercial</h3>
+            <p>Backyards, HOAs, gyms, hotels, and regulated public pools.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================= SERVICES =========================== -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="services-panel">
+        <div class="services-layout">
+          <div class="services-intro">
+            <span class="eyebrow">Services</span>
+            <h2 class="services-panel__heading">Everything your pool needs, from one company</h2>
+            <p class="services-panel__description">
+              Cleaning, repairs, and new construction &mdash; so you are not juggling three
+              vendors who blame each other when something goes wrong.
+            </p>
+            <a class="btn btn-primary" href="#contact">Get a free quote</a>
+            <p class="services-intro__note">
+              Licensed, insured, and locally based in Manassas Park.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/><path d="M10 21v-6h4v6"/></svg>
+              <h3 class="service-card__title">Residential pool service</h3>
+              <p class="service-card__description">Weekly and bi-weekly care for backyard pools. Chemicals, skimming, brushing, baskets.</p>
+            </article>
+
+            <article class="service-card">
+              <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9.5 9h.01M14.5 9h.01M9.5 13h.01M14.5 13h.01"/></svg>
+              <h3 class="service-card__title">Commercial pool service</h3>
+              <p class="service-card__description">Gyms, hotels, apartments, HOAs, and swim facilities. Records kept inspection-ready.</p>
+            </article>
+
+            <article class="service-card">
+              <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg>
+              <h3 class="service-card__title">Pool repairs</h3>
+              <p class="service-card__description">Pumps, motors, heaters, filters, lights, timers, leaks, drains, and automation.</p>
+            </article>
+
+            <article class="service-card">
+              <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+              <h3 class="service-card__title">New construction &amp; installation</h3>
+              <p class="service-card__description">New builds, equipment, and materials. One company from dig to first swim.</p>
+            </article>
+
+            <article class="service-card">
+              <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
+              <h3 class="service-card__title">Maintenance packages</h3>
+              <p class="service-card__description">Weekly or bi-weekly. Same crew, same day, same standard &mdash; in writing.</p>
+            </article>
+
+            <article class="service-card">
+              <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+              <h3 class="service-card__title">Seasonal open &amp; close</h3>
+              <p class="service-card__description">Spring opening, fall closing, and everything the change of season needs.</p>
+            </article>
+
+            <article class="service-card">
+              <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>
+              <h3 class="service-card__title">Tile cleaning</h3>
+              <p class="service-card__description">Scale and film off the waterline tile, without dulling the finish.</p>
+            </article>
+
+            <article class="service-card">
+              <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/></svg>
+              <h3 class="service-card__title">Stone &amp; deck sealing</h3>
+              <p class="service-card__description">Sealer on coping, deck, and stone to slow weathering and staining.</p>
+            </article>
+
+            <article class="service-card">
+              <svg class="service-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 8.5c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2"/><path d="M2 15c2 0 2 2 4 2s2-2 4-2 2 2 4 2 2-2 4-2 2 2 4 2"/></svg>
+              <h3 class="service-card__title">Spa &amp; hot tub service</h3>
+              <p class="service-card__description">Water care, cleaning, and repairs for spas and hot tubs.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= PACKAGES =========================== -->
+  <section class="section section--soft" id="packages">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Maintenance packages</span>
+        <h2 class="section-title">Pick a cadence. Everything else is included.</h2>
+        <p class="section-lede">
+          Every package includes the full visit: skim, brush, vacuum, baskets, chemical
+          balance, and the written note. The only difference is how often we come.
+        </p>
+      </div>
+
+      <div class="plans">
+        <article class="plan plan--featured">
+          <span class="plan__badge">Most chosen</span>
+          <h3 class="plan__name">Weekly</h3>
+          <p class="plan__desc">For pools in use most days through the summer.</p>
+          <div class="plan__price">
+            <span class="plan__price-label">From</span>
+            <span class="plan__price-num ph" title="Rate card pending">$______</span>
+            <span class="plan__price-per">/ month</span>
+          </div>
+          <ul class="plan__list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Full cleaning every week</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Water tested and balanced</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Baskets emptied, filter checked monthly</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Written note after every visit</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Priority scheduling for repairs</li>
+          </ul>
+          <a class="btn btn-primary btn-block" href="#contact">Request this package</a>
+        </article>
+
+        <article class="plan">
+          <span class="plan__badge plan__badge--ghost" aria-hidden="true">&nbsp;</span>
+          <h3 class="plan__name">Bi-weekly</h3>
+          <p class="plan__desc">For smaller pools and lighter use.</p>
+          <div class="plan__price">
+            <span class="plan__price-label">From</span>
+            <span class="plan__price-num ph" title="Rate card pending">$______</span>
+            <span class="plan__price-per">/ month</span>
+          </div>
+          <ul class="plan__list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Full cleaning every other week</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Water tested and balanced</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Baskets emptied</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Written note after every visit</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Chemical top-up between visits</li>
+          </ul>
+          <a class="btn btn-secondary btn-block" href="#contact">Request this package</a>
+        </article>
+
+        <article class="plan">
+          <span class="plan__badge plan__badge--ghost" aria-hidden="true">&nbsp;</span>
+          <h3 class="plan__name">One-time</h3>
+          <p class="plan__desc">Recovery for a neglected pool, or a clean before guests arrive.</p>
+          <div class="plan__price">
+            <span class="plan__price-num plan__price-num--sm">Quoted per pool</span>
+          </div>
+          <ul class="plan__list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Green-to-clean recovery</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Deep vacuum and brush</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Shock and filtration run</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Water re-tested before we leave</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>Written note, same as any visit</li>
+          </ul>
+          <a class="btn btn-secondary btn-block" href="#contact">Get a one-time quote</a>
+        </article>
+      </div>
+
+      <p class="plans-note">
+        <b>Seasonal open and close is priced separately</b> &mdash; it is a set of jobs, not
+        a cadence. Ask for the opening and closing rates for your pool size.
+      </p>
+      <p class="plans-note">
+        <b>Prototype note:</b> the <span class="ph">$______</span> figures are deliberate
+        placeholders. Real &ldquo;from&rdquo; rates need the owner's rate card before this
+        section is finished.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ COMMERCIAL ========================== -->
+  <section class="section" id="commercial">
+    <div class="container">
+      <div class="feature-grid on-dark">
+        <img class="feature-grid__image"
+             src="images/commercial-pool.jpg"
+             width="1200" height="900"
+             alt="A commercial hotel swimming pool with a clean deck and lounge chairs."
+             loading="lazy" decoding="async">
+
+        <div class="feature-grid__content">
+          <span class="eyebrow">For property managers</span>
+          <h2>Your pool needs a certified operator on site while it's open. Ours is the owner.</h2>
+          <p>
+            Prince William County requires a certified operator on site for commercial
+            pools, and water quality has to be tested and posted. That turns pool service
+            into a paperwork problem &mdash; and paperwork is where we are unusually good.
+          </p>
+
+          <ul class="checklist">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+              <div><b>CPO-certified operator</b><span>The owner personally &mdash; not a rotating subcontractor</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+              <div><b>Water tested and posted every visit</b><span>Chlorine, pH, and clarity, on the placard and in the log</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+              <div><b>Annual county permit handled</b><span>Renewal paperwork tracked so it is never a surprise</span></div>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+              <div><b>Inspection-ready records</b><span>Kept for the year, in the format an inspector expects</span></div>
+            </li>
+          </ul>
+
+          <a class="btn btn-primary" href="tel:+15715550138">Talk to us about your property</a>
+          <p class="feature-grid__fine">
+            Hotels &middot; motels &middot; gyms &middot; apartments &middot; HOAs &middot;
+            swim clubs &middot; parks &middot; regulated public pools
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PROCESS =========================== -->
+  <section class="section section--soft" id="visit">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What happens on a visit</span>
+        <h2 class="section-title">Five steps, the same order, every time</h2>
+        <p class="section-lede">No two pools need the same water. The process does not change.</p>
+      </div>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step__num" aria-hidden="true">01</span>
+          <h3>We arrive in the window we gave you</h3>
+          <p>Same day, same crew. If that changes, you hear it from us first.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">02</span>
+          <h3>Test the water before touching it</h3>
+          <p>Free chlorine, pH, alkalinity, stabiliser, clarity. Numbers first, chemicals second.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">03</span>
+          <h3>Clean the pool</h3>
+          <p>Skim the surface, brush the walls and steps, vacuum the floor, empty the baskets.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">04</span>
+          <h3>Balance what needs balancing</h3>
+          <p>Only what the test calls for. Not a set dose out of a jug.</p>
+        </li>
+        <li class="step">
+          <span class="step__num" aria-hidden="true">05</span>
+          <h3>Leave the note</h3>
+          <p>Date, time, water status, and the work performed. On your door before we drive away.</p>
+        </li>
+      </ol>
+
+      <p class="step-note">
+        <strong>For commercial pools,</strong> those same records are what a health
+        inspector asks to see &mdash; and Virginia requires them to be kept for a year.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================ WHY VIRGINIA ======================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Why Virginia pools need a schedule</span>
+        <h2 class="section-title">This is not Arizona water</h2>
+      </div>
+      <div class="prose" style="margin-inline:auto;text-align:center">
+        <p>
+          Virginia summers are humid and stormy, which means pollen and debris in spring,
+          algae the moment circulation drops in July, and leaves through October. A pool
+          left alone for two weeks does not just look bad &mdash; it costs real money to
+          bring back.
+        </p>
+        <p>
+          We are local, and the crew is the same one every week. If the pump is getting
+          loud or the chemistry is drifting, you hear it from us before you notice it
+          yourself.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== SERVICE AREA ========================= -->
+  <section class="section section--soft" id="areas">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Service area</span>
+        <h2 class="section-title">Serving Manassas, Manassas Park, and the towns around them</h2>
+      </div>
+      <ul class="area-list">
+        <li>Manassas</li>
+        <li>Manassas Park</li>
+        <li>Centreville</li>
+        <li>Bristow</li>
+        <li>Gainesville</li>
+        <li>Haymarket</li>
+      </ul>
+      <p class="area-note">
+        Just outside that list? Call and ask &mdash; it depends on the route, not on a map line.
+      </p>
+    </div>
+  </section>
+
+  <!-- =========================== BEFORE / AFTER ======================= -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Before &amp; after</span>
+        <h2 class="section-title">Green to clear, in photos</h2>
+      </div>
+
+      <!-- No company photography exists yet. These frames stay empty until
+           real jobs are photographed; no stock image is presented as our work. -->
+      <div class="ba">
+        <div class="ba-tile">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M21 16l-5-5-6 6"/></svg>
+          <span><strong>Job photo 01</strong>Before / after pair</span>
+        </div>
+        <div class="ba-tile">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M21 16l-5-5-6 6"/></svg>
+          <span><strong>Job photo 02</strong>Before / after pair</span>
+        </div>
+        <div class="ba-tile">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M21 16l-5-5-6 6"/></svg>
+          <span><strong>Job photo 03</strong>Before / after pair</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== TESTIMONIALS ========================= -->
+  <section class="section section--soft">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What owners say</span>
+        <h2 class="section-title">Reviews</h2>
+      </div>
+
+      <div class="quotes">
+        <article class="quote">
+          <svg class="quote__mark" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M9.5 5.5C6.4 6.9 4.5 9.6 4.5 12.8c0 2.3 1.3 3.7 3.1 3.7 1.7 0 2.9-1.2 2.9-2.9 0-1.6-1.1-2.7-2.6-2.7-.3 0-.6 0-.8.1.3-1.4 1.4-2.6 3-3.4zM18.5 5.5c-3.1 1.4-5 4.1-5 7.3 0 2.3 1.3 3.7 3.1 3.7 1.7 0 2.9-1.2 2.9-2.9 0-1.6-1.1-2.7-2.6-2.7-.3 0-.6 0-.8.1.3-1.4 1.4-2.6 3-3.4z"/></svg>
+          <p>They came out the same week I called and had the green out of it in two visits. Left a note both times, which no one else has ever done.</p>
+          <footer><b>Dana R.</b>Manassas</footer>
+        </article>
+
+        <article class="quote">
+          <svg class="quote__mark" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M9.5 5.5C6.4 6.9 4.5 9.6 4.5 12.8c0 2.3 1.3 3.7 3.1 3.7 1.7 0 2.9-1.2 2.9-2.9 0-1.6-1.1-2.7-2.6-2.7-.3 0-.6 0-.8.1.3-1.4 1.4-2.6 3-3.4zM18.5 5.5c-3.1 1.4-5 4.1-5 7.3 0 2.3 1.3 3.7 3.1 3.7 1.7 0 2.9-1.2 2.9-2.9 0-1.6-1.1-2.7-2.6-2.7-.3 0-.6 0-.8.1.3-1.4 1.4-2.6 3-3.4z"/></svg>
+          <p>Same guy every Thursday and the pool is ready before the weekend. I know exactly what I am paying for, which is more than I could say before.</p>
+          <footer><b>Priya S.</b>Manassas Park</footer>
+        </article>
+
+        <article class="quote">
+          <svg class="quote__mark" width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M9.5 5.5C6.4 6.9 4.5 9.6 4.5 12.8c0 2.3 1.3 3.7 3.1 3.7 1.7 0 2.9-1.2 2.9-2.9 0-1.6-1.1-2.7-2.6-2.7-.3 0-.6 0-.8.1.3-1.4 1.4-2.6 3-3.4zM18.5 5.5c-3.1 1.4-5 4.1-5 7.3 0 2.3 1.3 3.7 3.1 3.7 1.7 0 2.9-1.2 2.9-2.9 0-1.6-1.1-2.7-2.6-2.7-.3 0-.6 0-.8.1.3-1.4 1.4-2.6 3-3.4z"/></svg>
+          <p>We manage four apartment pools. They keep the water log and the operator certification ready for the inspector, and that is the part I actually care about.</p>
+          <footer><b>Property manager</b>Prince William</footer>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================== FAQ ============================== -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Questions</span>
+        <h2 class="section-title">The things people ask before they book</h2>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>Do I need to be home during service?</summary>
+          <div class="faq-a">
+            <p>
+              No. Most customers are at work. We need a way into the pool area &mdash; a
+              gate code, a side-yard path, or a lockbox &mdash; and a door to leave the
+              note on. If a dog is in the yard, tell us once and we will work around it.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How often should a pool be serviced?</summary>
+          <div class="faq-a">
+            <p>
+              Weekly for most pools in use through the summer. Bi-weekly works for a small
+              pool with light use, or a pool under a cover. In the middle of a Virginia
+              July, weekly is not upselling &mdash; it is the interval at which the water
+              stays stable.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What is included in a maintenance visit?</summary>
+          <div class="faq-a">
+            <p>
+              Skim the surface, brush the walls and steps, vacuum the floor, empty the
+              skimmer and pump baskets, test the water, and balance what the test calls
+              for. Then a written note with the date, time, water status, and work done.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How much does pool service cost?</summary>
+          <div class="faq-a">
+            <p>
+              It depends on pool size, how much debris the yard drops, and how often you
+              want us. The packages above are priced from a monthly rate, and seasonal open
+              and close are quoted separately.
+            </p>
+            <p>We would rather show you a number and explain it than hand you &ldquo;call for pricing.&rdquo;</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Do you service commercial pools?</summary>
+          <div class="faq-a">
+            <p>
+              Yes &mdash; hotels, motels, gyms, apartment complexes, HOAs, swim clubs,
+              parks, and other regulated public pools. The owner holds the Certified Pool
+              Operator certification that Prince William County requires on site, and the
+              water log is kept inspection-ready.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Do you repair all brands?</summary>
+          <div class="faq-a">
+            <p>
+              Yes. Pumps, motors, heaters, filters, lights, timers, and automation across
+              the major brands. If a part is discontinued we will tell you what the
+              replacement options are before ordering anything.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What is the difference between weekly and bi-weekly?</summary>
+          <div class="faq-a">
+            <p>
+              Only the interval. The visit itself is identical &mdash; same cleaning, same
+              testing, same written note. Weekly gets you more frequent chemistry
+              correction, which matters most in July and August.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= CONTACT ============================ -->
+  <section class="section section--soft" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Get a quote</span>
+        <h2 class="section-title">Tell us about the pool</h2>
+        <p class="section-lede">
+          Four fields is all we need to get started. If it is urgent, calling is faster
+          &mdash; someone answers during business hours.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <form class="form-card form-grid" id="quote-form" novalidate>
+          <div class="field">
+            <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="f-phone">Phone <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required>
+          </div>
+
+          <div class="field">
+            <label for="f-city">Pool address or city <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-city" name="city" type="text" autocomplete="address-level2" required>
+          </div>
+
+          <div class="field">
+            <label for="f-service">What do you need? <span class="req" aria-hidden="true">*</span></label>
+            <select id="f-service" name="service" required>
+              <option value="">Choose one</option>
+              <option>Weekly maintenance</option>
+              <option>Bi-weekly maintenance</option>
+              <option>One-time cleaning</option>
+              <option>Seasonal opening or closing</option>
+              <option>Repair</option>
+              <option>New pool or installation</option>
+              <option>Tile, stone, or deck</option>
+              <option>Spa or hot tub</option>
+              <option>Commercial property</option>
+            </select>
+          </div>
+
+          <div class="field span-2">
+            <label for="f-email">Email <span class="opt">(optional)</span></label>
+            <input id="f-email" name="email" type="email" autocomplete="email">
+          </div>
+
+          <div class="field span-2">
+            <label for="f-msg">Anything we should know? <span class="opt">(optional)</span></label>
+            <textarea id="f-msg" name="message" rows="3"
+                      placeholder="Pool size, green water, a pump that stopped, a gate code..."></textarea>
+          </div>
+
+          <div class="span-2">
+            <div class="form-actions">
+              <button class="btn btn-primary" type="submit">Request a quote</button>
+              <a class="btn btn-secondary" href="tel:+15715550138">Or call (571) 555-0138</a>
+            </div>
+            
+            <p class="form-status" id="form-status" role="status" aria-live="polite" tabindex="-1" hidden>
+              Form works. In production this would post to the site's mail handler.
+            </p>
+          </div>
+        </form>
+
+        <aside class="contact-aside on-dark">
+          <h3>Call instead</h3>
+          <p>The fastest way to get a straight answer about your pool.</p>
+          <a class="tel" href="tel:+15715550138">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15.5 21A12.5 12.5 0 0 1 3 8.5V6a2 2 0 0 1 2-2h2.2a1 1 0 0 1 1 .8l.8 3a1 1 0 0 1-.3 1L7 10.4a11 11 0 0 0 5.6 5.6l1.6-1.7a1 1 0 0 1 1-.3l3 .8a1 1 0 0 1 .8 1V19a2 2 0 0 1-2 2Z"/></svg>
+            (571) 555-0138
           </a>
-        </div>
-        <div class="bg-primary rounded-3xl p-8 lg:p-10 border border-primary/20 relative">
-          <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-          <i data-lucide="trophy" class="w-12 h-12 text-accent mb-6"></i>
-          <h3 class="font-heading text-3xl font-bold text-white mb-4">Proudly Serving 1,000+ Satisfied Clients</h3>
-          <p class="text-white/80 leading-relaxed">For over 20 years, we've been the go-to partner for elite pool builders, contractors, and property managers across VA, DC, and MD.</p>
-          <div class="mt-8 flex flex-wrap gap-4">
-            <div class="flex items-center gap-2 bg-white/10 rounded-xl px-4 py-2 border border-white/10">
-              <i data-lucide="map-pin" class="w-4 h-4 text-accent"></i>
-              <span class="text-white/80 text-sm">Virginia</span>
-            </div>
-            <div class="flex items-center gap-2 bg-white/10 rounded-xl px-4 py-2 border border-white/10">
-              <i data-lucide="map-pin" class="w-4 h-4 text-accent"></i>
-              <span class="text-white/80 text-sm">Washington DC</span>
-            </div>
-            <div class="flex items-center gap-2 bg-white/10 rounded-xl px-4 py-2 border border-white/10">
-              <i data-lucide="map-pin" class="w-4 h-4 text-accent"></i>
-              <span class="text-white/80 text-sm">Maryland</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===== COMMERCIAL SERVICES ===== -->
-  <section id="commercial" class="py-24 lg:py-32 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-4">For Businesses</span>
-        <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary leading-tight">Commercial Pool Management</h2>
-        <p class="mt-4 text-gray-600 text-lg max-w-2xl mx-auto">Full-service solutions for HOAs, apartment complexes, hotels, and community recreational centers.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-surface rounded-2xl p-8 border border-gray-200 hover:border-primary/30 hover:shadow-xl transition-all duration-300 cursor-pointer">
-          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-            <i data-lucide="building-2" class="w-7 h-7 text-primary"></i>
-          </div>
-          <h3 class="font-heading text-2xl font-bold text-gray-900 mb-3">HOA &amp; Community Pools</h3>
-          <p class="text-gray-600 text-sm leading-relaxed mb-6">Routine maintenance, health compliance, opening &amp; closing.</p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-2 text-sm text-gray-600">
-              <i data-lucide="check" class="w-4 h-4 text-accent mt-0.5 shrink-0"></i>
-              Health Department Compliance
-            </li>
-            <li class="flex items-start gap-2 text-sm text-gray-600">
-              <i data-lucide="check" class="w-4 h-4 text-accent mt-0.5 shrink-0"></i>
-              Seasonal Opening &amp; Closing
-            </li>
-            <li class="flex items-start gap-2 text-sm text-gray-600">
-              <i data-lucide="check" class="w-4 h-4 text-accent mt-0.5 shrink-0"></i>
-              Preventive Maintenance Plans
-            </li>
-          </ul>
-        </div>
-        <div class="bg-surface rounded-2xl p-8 border border-gray-200 hover:border-primary/30 hover:shadow-xl transition-all duration-300 cursor-pointer">
-          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-            <i data-lucide="hotel" class="w-7 h-7 text-primary"></i>
-          </div>
-          <h3 class="font-heading text-2xl font-bold text-gray-900 mb-3">Hotel &amp; Resort Pools</h3>
-          <p class="text-gray-600 text-sm leading-relaxed mb-6">Daily cleaning, chemical monitoring, equipment upkeep.</p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-2 text-sm text-gray-600">
-              <i data-lucide="check" class="w-4 h-4 text-accent mt-0.5 shrink-0"></i>
-              Certified Pool Operators
-            </li>
-            <li class="flex items-start gap-2 text-sm text-gray-600">
-              <i data-lucide="check" class="w-4 h-4 text-accent mt-0.5 shrink-0"></i>
-              Daily Cleaning &amp; Monitoring
-            </li>
-            <li class="flex items-start gap-2 text-sm text-gray-600">
-              <i data-lucide="check" class="w-4 h-4 text-accent mt-0.5 shrink-0"></i>
-              Emergency Repair Services
-            </li>
-          </ul>
-        </div>
-        <div class="bg-surface rounded-2xl p-8 border border-gray-200 hover:border-primary/30 hover:shadow-xl transition-all duration-300 cursor-pointer">
-          <div class="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-            <i data-lucide="waves" class="w-7 h-7 text-primary"></i>
-          </div>
-          <h3 class="font-heading text-2xl font-bold text-gray-900 mb-3">Lifeguard Staffing</h3>
-          <p class="text-gray-600 text-sm leading-relaxed mb-6">Certified lifeguards and pool operators for your facility.</p>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-2 text-sm text-gray-600">
-              <i data-lucide="check" class="w-4 h-4 text-accent mt-0.5 shrink-0"></i>
-              Turnkey Safety Management
-            </li>
-            <li class="flex items-start gap-2 text-sm text-gray-600">
-              <i data-lucide="check" class="w-4 h-4 text-accent mt-0.5 shrink-0"></i>
-              Staff Training &amp; Reviews
-            </li>
-            <li class="flex items-start gap-2 text-sm text-gray-600">
-              <i data-lucide="check" class="w-4 h-4 text-accent mt-0.5 shrink-0"></i>
-              Full Compliance Coverage
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="text-center mt-10">
-        <a href="#contact" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-200 cursor-pointer shadow-lg hover:shadow-xl">
-          Get a Commercial Quote
-          <i data-lucide="arrow-right" class="w-5 h-5"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== PRICING PACKAGES ===== -->
-  <section id="pricing" class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-4">Plans &amp; Pricing</span>
-        <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary leading-tight">Residential Maintenance Services</h2>
-        <p class="mt-4 text-gray-600 text-lg max-w-2xl mx-auto">Ensure your pool stays flawless with our personalized subscription packages. Relax knowing our skilled team takes care of all your pool maintenance needs.</p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <div class="bg-white rounded-2xl p-8 border border-gray-200 hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer relative">
-          <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Bi-Weekly</h3>
-          <div class="text-4xl font-bold text-primary font-heading mb-1">$1,990</div>
-          <div class="text-gray-500 text-sm mb-6">Chemicals Included</div>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-2 text-sm text-gray-700"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i> Pool Opening</li>
-            <li class="flex items-center gap-2 text-sm text-gray-700"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i> 8 Bi-Weekly Maintenance Visits</li>
-            <li class="flex items-center gap-2 text-sm text-gray-700"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i> Pool Closing</li>
-            <li class="flex items-center gap-2 text-sm text-gray-500"><i data-lucide="plus" class="w-4 h-4 text-gray-400 shrink-0"></i> Additional Visit: $140</li>
-          </ul>
-          <a href="#contact" class="block w-full text-center bg-gray-100 hover:bg-gray-200 text-gray-900 py-3 rounded-xl font-semibold transition-all duration-200 cursor-pointer">Get It Now</a>
-        </div>
-        <div class="bg-white rounded-2xl p-8 border-2 border-accent hover:shadow-xl transition-all duration-300 cursor-pointer relative scale-105 shadow-lg">
-          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
-            <i data-lucide="star" class="w-3 h-3"></i>
-            Most Popular
-          </div>
-          <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Weekly</h3>
-          <div class="text-4xl font-bold text-primary font-heading mb-1">$2,990</div>
-          <div class="text-gray-500 text-sm mb-6">Chemicals Included</div>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-2 text-sm text-gray-700"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i> Pool Opening</li>
-            <li class="flex items-center gap-2 text-sm text-gray-700"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i> 15 Weekly Maintenance Visits</li>
-            <li class="flex items-center gap-2 text-sm text-gray-700"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i> Pool Closing</li>
-            <li class="flex items-center gap-2 text-sm text-gray-500"><i data-lucide="plus" class="w-4 h-4 text-gray-400 shrink-0"></i> Additional Visit: $140</li>
-          </ul>
-          <a href="#contact" class="block w-full text-center bg-accent hover:bg-accent-light text-white py-3 rounded-xl font-semibold transition-all duration-200 cursor-pointer shadow-md">Get It Now</a>
-        </div>
-        <div class="bg-white rounded-2xl p-8 border border-gray-200 hover:border-primary/20 hover:shadow-xl transition-all duration-300 cursor-pointer md:col-start-2 lg:col-start-auto">
-          <h3 class="font-heading text-2xl font-bold text-gray-900 mb-2">Open / Close</h3>
-          <div class="text-4xl font-bold text-primary font-heading mb-1">$480</div>
-          <div class="text-gray-500 text-sm mb-6">Each / Chemicals Included</div>
-          <ul class="space-y-3 mb-8">
-            <li class="flex items-center gap-2 text-sm text-gray-700"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i> Pool Opening: $480</li>
-            <li class="flex items-center gap-2 text-sm text-gray-700"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i> Pool Closing: $480</li>
-            <li class="flex items-center gap-2 text-sm text-gray-700"><i data-lucide="check" class="w-4 h-4 text-accent shrink-0"></i> Bundle &amp; Save: $900</li>
-          </ul>
-          <a href="#contact" class="block w-full text-center bg-gray-100 hover:bg-gray-200 text-gray-900 py-3 rounded-xl font-semibold transition-all duration-200 cursor-pointer">Get It Now</a>
-        </div>
-      </div>
-      <div class="text-center mt-8">
-        <p class="text-gray-500 text-sm">Acid Wash service also available — <a href="#contact" class="text-primary font-semibold hover:underline cursor-pointer">starting at $900</a></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== HOW IT WORKS ===== -->
-  <section class="py-24 lg:py-32 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-4">Simple Process</span>
-        <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary leading-tight">How It Works</h2>
-        <p class="mt-4 text-gray-600 text-lg max-w-2xl mx-auto">From consultation to crystal-clear water — we make it easy.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
-        <div class="hidden lg:block absolute top-12 left-[12.5%] right-[12.5%] h-0.5 bg-gray-200">
-          <div class="absolute inset-0 bg-accent/30" style="width: 0;"></div>
-        </div>
-        <div class="text-center relative">
-          <div class="w-24 h-24 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 border-2 border-primary/20">
-            <i data-lucide="phone" class="w-10 h-10 text-primary"></i>
-          </div>
-          <div class="text-2xl font-bold text-gray-900 font-heading mb-2">1. Consultation</div>
-          <p class="text-gray-600 text-sm leading-relaxed">Contact us for a free assessment of your pool needs.</p>
-        </div>
-        <div class="text-center relative">
-          <div class="w-24 h-24 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 border-2 border-primary/20">
-            <i data-lucide="clipboard-list" class="w-10 h-10 text-primary"></i>
-          </div>
-          <div class="text-2xl font-bold text-gray-900 font-heading mb-2">2. Custom Plan</div>
-          <p class="text-gray-600 text-sm leading-relaxed">We design a personalized maintenance or service plan.</p>
-        </div>
-        <div class="text-center relative">
-          <div class="w-24 h-24 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 border-2 border-primary/20">
-            <i data-lucide="wrench" class="w-10 h-10 text-primary"></i>
-          </div>
-          <div class="text-2xl font-bold text-gray-900 font-heading mb-2">3. Service</div>
-          <p class="text-gray-600 text-sm leading-relaxed">Our certified team handles everything with precision.</p>
-        </div>
-        <div class="text-center relative">
-          <div class="w-24 h-24 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-6 border-2 border-primary/20">
-            <i data-lucide="waves" class="w-10 h-10 text-primary"></i>
-          </div>
-          <div class="text-2xl font-bold text-gray-900 font-heading mb-2">4. Enjoy</div>
-          <p class="text-gray-600 text-sm leading-relaxed">Relax and enjoy your pristine, worry-free pool.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TESTIMONIALS ===== -->
-  <section class="py-24 lg:py-32">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <span class="inline-block text-primary font-semibold text-sm uppercase tracking-widest mb-4">Testimonials</span>
-        <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-primary leading-tight">What Our Clients Say</h2>
-        <p class="mt-4 text-gray-600 text-lg max-w-2xl mx-auto">Don't just take our word for it — hear from homeowners, builders, and property managers.</p>
-      </div>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 cursor-pointer">
-          <div class="flex gap-1 mb-5">
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-          </div>
-          <p class="text-gray-700 leading-relaxed text-sm italic mb-6">"Alexander Pool Corporation transformed our backyard. Their attention to detail and professionalism is unmatched. Our pool has never looked better!"</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-              <span class="text-primary font-bold text-sm">SM</span>
+          <dl>
+            <div>
+              <dt>Hours</dt>
+              <dd>Mon&ndash;Sat, 8:00 AM &ndash; 6:00 PM <span class="ph" title="Placeholder — confirm with owner">[CONFIRM]</span></dd>
             </div>
             <div>
-              <div class="font-semibold text-gray-900 text-sm">Sarah M.</div>
-              <div class="text-gray-500 text-xs">McLean, VA</div>
-            </div>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 cursor-pointer">
-          <div class="flex gap-1 mb-5">
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-          </div>
-          <p class="text-gray-700 leading-relaxed text-sm italic mb-6">"We've worked with several pool companies over the years, but none compare to APC. Their compliance expertise and reliability have made them an indispensable partner."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-              <span class="text-primary font-bold text-sm">JR</span>
+              <dt>Email</dt>
+              <dd><a href="mailto:info@manassaspoolservice.com">info@manassaspoolservice.com</a></dd>
             </div>
             <div>
-              <div class="font-semibold text-gray-900 text-sm">James R.</div>
-              <div class="text-gray-500 text-xs">HOA Board, Arlington, VA</div>
+              <dt>Based in</dt>
+              <dd>Manassas Park, VA 20111 &mdash; service area, no storefront</dd>
             </div>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 cursor-pointer">
-          <div class="flex gap-1 mb-5">
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-            <i data-lucide="star" class="w-5 h-5 text-accent fill-accent"></i>
-          </div>
-          <p class="text-gray-700 leading-relaxed text-sm italic mb-6">"Their commercial pool management is top-tier. Having certified lifeguards and operators on site gives us peace of mind. Highly recommend."</p>
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-              <span class="text-primary font-bold text-sm">DL</span>
-            </div>
-            <div>
-              <div class="font-semibold text-gray-900 text-sm">David L.</div>
-              <div class="text-gray-500 text-xs">Hotel Manager, Washington, DC</div>
-            </div>
-          </div>
-        </div>
+          </dl>
+        </aside>
       </div>
     </div>
   </section>
+</main>
 
-  <!-- ===== FINAL CTA ===== -->
-  <section id="contact" class="py-24 lg:py-32 relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-[#0F1D4A]"></div>
-    <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 70% 20%, rgba(202,138,4,0.3) 0%, transparent 50%), radial-gradient(circle at 30% 80%, rgba(255,255,255,0.2) 0%, transparent 40%);"></div>
-    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">Transform Your Pool Experience Today</h2>
-      <p class="mt-6 text-white/80 text-lg max-w-xl mx-auto">Contact us now for a personalized consultation or to schedule your next pool service.</p>
-      <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-        <a href="#contact" class="bg-accent hover:bg-accent-light text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-200 cursor-pointer shadow-xl hover:shadow-2xl">
-          Contact Us
+<!-- ============================== FOOTER ============================== -->
+<footer class="site-footer on-dark">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <a class="brand" href="#" aria-label="Manassas Pool Service — home">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M12 2.6c3.4 3.7 5.6 6.4 5.6 9.2A5.6 5.6 0 0 1 12 17.4a5.6 5.6 0 0 1-5.6-5.6c0-2.8 2.2-5.5 5.6-9.2Z"/>
+            <path d="M2.6 20.4c1.4 0 1.9-1.2 3.3-1.2s1.9 1.2 3.3 1.2 1.9-1.2 3.3-1.2 1.9 1.2 3.3 1.2 1.9-1.2 3.3-1.2"/>
+          </svg>
+          <span>
+            <span class="brand-name">Manassas Pool Service</span>
+            <span class="brand-sub">Manassas Park, VA</span>
+          </span>
         </a>
-        <a href="tel:+17035550123" class="bg-white/10 backdrop-blur hover:bg-white/20 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all duration-200 cursor-pointer border border-white/20 inline-flex items-center justify-center gap-2">
-          <i data-lucide="phone" class="w-5 h-5"></i>
-          (703) 555-0123
-        </a>
+        <p>
+          Pool cleaning, repair, and new construction in Manassas, Manassas Park, and the
+          surrounding Prince William County communities. A written note after every visit.
+        </p>
+
+        <ul class="footer-creds">
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 8.5-4.1-.9-7-4.3-7-8.5V6z"/></svg>
+            Virginia Licensed Contractor &middot; Lic. #2705128447
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5 7 21l5-2.5 5 2.5-1.5-7.5"/></svg>
+            Owner is a Certified Pool Operator
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 7h16v10H4z"/></svg>
+            Prince William County Business Licensed
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5"/></svg>
+            Insured &mdash; certificate available on request
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2>Contact</h2>
+        <ul>
+          <li><a class="tel-link" href="tel:+15715550138">(571) 555-0138</a></li>
+          <li><a href="mailto:info@manassaspoolservice.com">info@manassaspoolservice.com</a></li>
+          <li>Mon&ndash;Sat, 8 AM &ndash; 6 PM</li>
+          <li>Manassas Park, VA 20111</li>
+          <li><a href="https://dporweb.dpor.virginia.gov/LicenseLookup/Search" rel="noopener">Verify our licence on DPOR &#8599;</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2>Services</h2>
+        <ul>
+          <li><a href="#services">Residential service</a></li>
+          <li><a href="#commercial">Commercial service</a></li>
+          <li><a href="#services">Pool repairs</a></li>
+          <li><a href="#services">New construction</a></li>
+          <li><a href="#packages">Maintenance packages</a></li>
+          <li><a href="#services">Spa &amp; hot tub</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h2>Service area</h2>
+        <ul>
+          <li>Manassas</li>
+          <li>Manassas Park</li>
+          <li>Centreville</li>
+          <li>Bristow</li>
+          <li>Gainesville</li>
+          <li>Haymarket</li>
+        </ul>
       </div>
     </div>
-  </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="bg-[#0F1D4A] text-white/70 py-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-        <div>
-          <div class="flex items-center gap-2 mb-4">
-            <svg class="w-8 h-8 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12h1m16 0h1M12 3v1m0 16v1M8 12a4 4 0 118 0 4 4 0 01-8 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l2 2"/></svg>
-            <span class="font-heading text-xl font-bold text-white">Alexander Pool</span>
-          </div>
-          <p class="text-sm leading-relaxed">Premium pool care for residential and commercial properties in VA, DC, and MD.</p>
-        </div>
-        <div>
-          <h4 class="font-heading text-lg font-bold text-white mb-4">Quick Links</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#services" class="hover:text-accent transition-colors duration-200 cursor-pointer">Services</a></li>
-            <li><a href="#why-us" class="hover:text-accent transition-colors duration-200 cursor-pointer">Why Us</a></li>
-            <li><a href="#about" class="hover:text-accent transition-colors duration-200 cursor-pointer">About</a></li>
-            <li><a href="#commercial" class="hover:text-accent transition-colors duration-200 cursor-pointer">Commercial</a></li>
-            <li><a href="#pricing" class="hover:text-accent transition-colors duration-200 cursor-pointer">Pricing</a></li>
-            <li><a href="#contact" class="hover:text-accent transition-colors duration-200 cursor-pointer">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-heading text-lg font-bold text-white mb-4">Services</h4>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#" class="hover:text-accent transition-colors duration-200 cursor-pointer">Pool Opening</a></li>
-            <li><a href="#" class="hover:text-accent transition-colors duration-200 cursor-pointer">Pool Maintenance</a></li>
-            <li><a href="#" class="hover:text-accent transition-colors duration-200 cursor-pointer">Pool Closing</a></li>
-            <li><a href="#" class="hover:text-accent transition-colors duration-200 cursor-pointer">Acid Wash</a></li>
-            <li><a href="#" class="hover:text-accent transition-colors duration-200 cursor-pointer">Repairs &amp; Renovation</a></li>
-            <li><a href="#" class="hover:text-accent transition-colors duration-200 cursor-pointer">Pool Inspection</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-heading text-lg font-bold text-white mb-4">Contact</h4>
-          <ul class="space-y-3 text-sm">
-            <li class="flex items-center gap-2">
-              <i data-lucide="map-pin" class="w-4 h-4 text-accent shrink-0"></i>
-              Springfield, Virginia
-            </li>
-            <li class="flex items-center gap-2">
-              <i data-lucide="phone" class="w-4 h-4 text-accent shrink-0"></i>
-              <a href="tel:+17035550123" class="hover:text-accent transition-colors duration-200 cursor-pointer">(703) 555-0123</a>
-            </li>
-            <li class="flex items-center gap-2">
-              <i data-lucide="mail" class="w-4 h-4 text-accent shrink-0"></i>
-              <a href="mailto:info@alexanderpoolcorp.com" class="hover:text-accent transition-colors duration-200 cursor-pointer">info@alexanderpoolcorp.com</a>
-            </li>
-          </ul>
-          <div class="mt-6">
-            <h4 class="font-heading text-lg font-bold text-white mb-3">Hours</h4>
-            <div class="text-sm space-y-1">
-              <p>Mon - Fri: 8:00 AM - 6:00 PM</p>
-              <p>Saturday: 9:00 AM - 3:00 PM</p>
-              <p class="text-white/50">Sunday: Closed</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
-        <p>&copy; 2024 Alexander Pool Corporation. All rights reserved.</p>
-        <div class="flex items-center gap-6">
-          <a href="#" class="hover:text-accent transition-colors duration-200 cursor-pointer">Privacy Policy</a>
-          <a href="#" class="hover:text-accent transition-colors duration-200 cursor-pointer">Terms of Service</a>
-          <a href="#" class="hover:text-accent transition-colors duration-200 cursor-pointer">Cookies Settings</a>
-        </div>
-      </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Manassas Pool Service. All rights reserved.</p>
+      <ul>
+        <li><a href="#" aria-disabled="true">Privacy</a></li>
+        <li><a href="#" aria-disabled="true">Terms</a></li>
+        <li><a href="#main">Back to top</a></li>
+      </ul>
     </div>
-  </footer>
 
-  <script>
-    // Lucide icons
-    lucide.createIcons();
+    
+  </div>
+</footer>
 
-    // Mobile menu
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-      const icon = menuBtn.querySelector('i');
-      if (mobileMenu.classList.contains('hidden')) {
-        icon.setAttribute('data-lucide', 'menu');
-      } else {
-        icon.setAttribute('data-lucide', 'x');
-      }
-      lucide.createIcons();
-    });
+<!-- ========================= MOBILE CALL BAR ========================= -->
+<div class="callbar">
+  <a class="btn btn-primary" href="tel:+15715550138">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M15.5 21A12.5 12.5 0 0 1 3 8.5V6a2 2 0 0 1 2-2h2.2a1 1 0 0 1 1 .8l.8 3a1 1 0 0 1-.3 1L7 10.4a11 11 0 0 0 5.6 5.6l1.6-1.7a1 1 0 0 1 1-.3l3 .8a1 1 0 0 1 .8 1V19a2 2 0 0 1-2 2Z"/></svg>
+    Call (571) 555-0138
+  </a>
+  <a class="btn btn-secondary" href="#contact">Quote</a>
+</div>
 
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-        menuBtn.querySelector('i').setAttribute('data-lucide', 'menu');
-        lucide.createIcons();
-      });
-    });
+<!-- ============================= SCHEMA ==============================
+  LocalBusiness only. No telephone, no hours, no ratings, no street address.
+================================================================== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://manassaspoolservice.com/#business",
+  "name": "Manassas Pool Service",
+  "description": "Swimming pool cleaning, repair, and new construction serving Manassas, Manassas Park, and Prince William County, Virginia. The owner is a Certified Pool Operator, and a written service note is left after every visit.",
+  "url": "https://manassaspoolservice.com/",
+  "email": "info@manassaspoolservice.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Manassas Park",
+    "addressRegion": "VA",
+    "postalCode": "20111",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Manassas" },
+    { "@type": "City", "name": "Manassas Park" },
+    { "@type": "City", "name": "Centreville" },
+    { "@type": "City", "name": "Bristow" },
+    { "@type": "City", "name": "Gainesville" },
+    { "@type": "City", "name": "Haymarket" }
+  ],
+  "knowsAbout": [
+    "Swimming pool maintenance",
+    "Swimming pool repair",
+    "Swimming pool construction",
+    "Commercial pool compliance"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Pool services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Weekly pool maintenance" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bi-weekly pool maintenance" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pool repair" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "New pool construction" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Seasonal opening and closing" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tile cleaning" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stone and deck sealing" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Spa and hot tub service" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial pool service" } }
+    ]
+  }
+}
+</script>
 
-    // Animated counters
-    function animateCounter(el) {
-      const target = parseInt(el.getAttribute('data-target'));
-      if (!target || el.dataset.animated === 'true') return;
-      el.dataset.animated = 'true';
-      const duration = 2000;
-      const start = performance.now();
-      function update(now) {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(eased * target);
-        el.textContent = current.toLocaleString();
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        } else {
-          el.textContent = target.toLocaleString();
-        }
-      }
-      requestAnimationFrame(update);
-    }
-
-    // Intersection Observer for counters
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.counter-value[data-target]').forEach(animateCounter);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    document.querySelectorAll('.stat-item, section:first-of-type .grid').forEach(el => {
-      observer.observe(el);
-    });
-
-    // Also observe hero counters
-    const heroCounters = document.querySelector('section:first-of-type .grid');
-    if (heroCounters) observer.observe(heroCounters);
-  </script>
+<!-- Keeps the demo form from navigating away. -->
+<script>
+(function () {
+  var form = document.getElementById('quote-form');
+  var status = document.getElementById('form-status');
+  if (!form || !status) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
+    status.hidden = false;
+    status.focus();
+  });
+}());
+</script>
 </body>
 </html>
